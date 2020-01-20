@@ -1,0 +1,10 @@
+.App-container{
+    max-width: 1200px;
+    padding: var(--m) var(--m);
+    margin: auto;
+    /* margin-top:200px; */
+    
+}
+.Background-container{
+    background-color: #E5E5E5;
+}

@@ -1,0 +1,53 @@
+.Story-container{
+    background-color: #EFEFEF;
+    max-width: 500px;
+    padding: 1px 10px 50px 10px;
+}
+.CreatorName{
+    text-decoration: none;
+        font-size: 16px;
+        padding-left: 12px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+}
+.TagsTime-container{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px; 
+    padding-left: 2px;
+}
+.TimeContainer{
+    font-weight: 1px;
+    color: #3A4B5E;
+    padding-top: 10px;
+    font-size: 10px;
+}
+.StoryContent{
+    font-size: 18px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+.CreatorName2{
+    margin-left: 10px;
+}
+.Likes-container{
+    font-size: 10px;
+    background-color: #EFEFEF;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    max-width: 128px;
+    padding: 8px;
+}
+
+.u-title-arvo TagBar{
+
+
+
+padding:5px;
+
+
+
+
+
+}

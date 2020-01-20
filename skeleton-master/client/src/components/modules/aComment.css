@@ -1,0 +1,23 @@
+.Comment-container{
+    background-color: #EFEFEF;
+    max-width: 500px;
+    padding-left: 8px; 
+    padding-bottom: 8px;
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+}
+.Creator-name{
+    font-size: 14px;
+    text-decoration: none;
+    padding-top: 10px;
+    /* padding-bottom: 5 px;
+    margin-bottom: 2 px; */
+    border-bottom: 0 px;
+}
+.Comment-content{
+    font-size:12px;
+    max-width: 500px;
+    padding-top: 0 px;
+    margin-top: 0  px;
+    
+}
