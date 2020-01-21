@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FullPost from "./fullPost";
 import { get } from "../../utilities";
+import "./questionsAsked.css"
 
 /**
  * @param {number} userId of post creator
@@ -40,12 +41,13 @@ class QuestionsAsked extends Component{
 
     // }
     render(){
+  
         let feed = this.props.userStories
         .map((storyObj1)=> 
         <FullPost storyObj = {storyObj1}/>
         );
         return (
-        <div>
+        <div className = "QuestionsAsked-container">
         {feed}
         </div>
             );

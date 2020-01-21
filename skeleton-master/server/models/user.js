@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const UserSchema = new mongoose.Schema({
   name: String,
   googleid: String,
-  subscribedTags: Array,
+  subscribedTags: [String],
 });
 
 // compile model from schema

@@ -16,7 +16,7 @@ class SideBar extends Component{
             <div>{this.props.userName}</div>
         <div className = "u-title-arvo">
         <div><Link to = "/profilepage1" className = "SidebarLink"> Questions asked </Link></div>
-        <div><Link to = "/profilepage3" className = "SidebarLink">Subscriptions </Link></div>
+        <div><Link to = "/profilepage3" className = "SidebarLink">Manage Subscriptions </Link></div>
         </div>
         </div>
        );

@@ -22,12 +22,14 @@ import "./manageSubs2.css"
         let unsubBlock = (this.props.unsubscribedTags
         .map((tag)=><div onClick= {()=>this.props.addSubscription(tag)} className = "Tag-container">{tag}</div>))
         return(
-            <div className = "TagBlock-container">
+            <div>
                 <div>Manage your subscriptions</div>
-                <div className = "TagBlock">Subscribed </div>
+                <div className = "TagBlock-container">
+                Current Subscriptions 
                 {subscribedBlock}
-                <div className = "TagBlock">Sugggested Subscriptions</div>
+                Sugggested Subscriptions
                 {unsubBlock}
+                </div>
           </div>
         )
     }

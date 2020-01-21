@@ -37,7 +37,10 @@ class ProfilePage1 extends Component{
         return(
             <div className = "ProfilePage1-container">
                 <div><SideBar userName = {this.props.userName}/></div>
-                <div><QuestionsAsked userRouterId = {this.props.userRouterId} userStories = {this.state.ListOfStoryObj}/></div>
+                <div><QuestionsAsked 
+                userRouterId = {this.props.userRouterId} 
+                userStories = {this.state.ListOfStoryObj}/>
+                </div>
             </div>
         )
     }

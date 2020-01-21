@@ -22,6 +22,7 @@ class Skeleton extends Component {
     return (
       <>
         <div className = "GoogleButton">
+          This is the landing page. Login and click and go to manage subscriptions. Pick subscriptions and view them in home.
         {this.props.userId ? (
           <GoogleLogout
             clientId={GOOGLE_CLIENT_ID}

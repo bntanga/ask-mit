@@ -13,7 +13,10 @@ import "./homeSubBar.css";
         let tags = this.props.subscribedTags
                 .map((tag)=> <div className = "Tag-container" onClick = {()=>this.props.handleFilter(tag)}>{tag}</div>)
         return (
+            <div>
+            <div>Your current subscriptions</div>
             <div>{tags}</div>
+            </div>
         )
     }  
  }

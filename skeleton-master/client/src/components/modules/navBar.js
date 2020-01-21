@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import "./NavBar.css";
 
+
 class NavBar extends Component{
     constructor(props) {
         super(props);
@@ -16,6 +17,7 @@ class NavBar extends Component{
                 <Link to = "/home" className = "NavBar-link">  Home </Link>
                 <Link to = "/notifications" className = "NavBar-link"> Notifications </Link>
                 <Link to = {`/profilepage1/${this.props.userId}`} className = "NavBar-link">  Profile </Link>
+                <Link to="/" className = "NavBar-link">Logout</Link>
             </div>
             </nav>
         )
