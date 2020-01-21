@@ -11,7 +11,7 @@ import "./homeSubBar.css";
       }
     render(){
         let tags = this.props.subscribedTags
-                .map((tag)=> <div className = "Tag-container">{tag}</div>)
+                .map((tag)=> <div className = "Tag-container" onClick = {()=>this.props.handleFilter(tag)}>{tag}</div>)
         return (
             <div>{tags}</div>
         )

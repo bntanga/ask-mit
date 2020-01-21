@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SideBar from "../modules/sideBar";
-import ManageSubs from "../modules/manageSubs";
+import ManageSubs from "../modules/manageSubs2";
+import "./profilePage3.css";
 
 /**pass in userobject
  * @param {string} userName of creator
@@ -16,13 +17,12 @@ class ProfilePage3 extends Component{
       }
     render(){
         return(
-            <div>
+            <div className = "ProfilePage3-container">
                 <SideBar userName = {this.props.userName}/>
-                <ManageSubs 
+                <ManageSubs
                 subscribedTags = {this.props.subscribedTags}
-                allTags = {this.props.allTags}
-                addTag = {this.props.addTag}
-                removeTag = {this.props.removeTag}
+                addSubscription = {this.props.addSubscription}
+                removeSubscription = {this.props.removeSubscription}
                 unsubscribedTags = {this.props.unsubscribedTags}
                  />
             </div>

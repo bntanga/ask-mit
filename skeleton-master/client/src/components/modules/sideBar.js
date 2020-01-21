@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
+import "./sideBar.css"
 
 /**
  * @param {string} userName of profile owner
@@ -11,11 +12,12 @@ class SideBar extends Component{
       }
     render(){
         return(
-        <div> 
-            <h4>{this.props.userName}</h4>
-        <Link to = "/profilepage1"> Questions asked </Link>
-        <Link to = "/profilepage2"> Comments made </Link>
-        <Link to = "/profilepage3">Subscriptions </Link>
+        <div className = "Sidebar-container"> 
+            <div>{this.props.userName}</div>
+        <div className = "u-title-arvo">
+        <div><Link to = "/profilepage1" className = "SidebarLink"> Questions asked </Link></div>
+        <div><Link to = "/profilepage3" className = "SidebarLink">Subscriptions </Link></div>
+        </div>
         </div>
        );
 

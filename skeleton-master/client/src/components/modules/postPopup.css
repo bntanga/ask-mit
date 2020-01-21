@@ -1,0 +1,136 @@
+.popUpContainer{
+
+
+    /* visibility: hidden; */
+    
+    display: flex;
+    /* top: 0; */
+
+    /* z-index: 99999; */
+
+    flex-direction: column;
+    background-color: #c4c4c4;
+    width:550px;
+    height:500px;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #C4C4C4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius:10px;
+    margin-left: 165px;
+
+}
+
+.popUpContainerAlternate{
+
+
+    /* visibility: hidden; */
+    
+    display: none;
+    /* top: 0; */
+
+    /* z-index: 99999; */
+
+    flex-direction: column;
+    background-color: #c4c4c4;
+    width:550px;
+    height:450px;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #C4C4C4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius:10px;
+    margin-left: 165px;
+
+}
+
+
+.popUpContainerText{
+
+font-size: 30px;
+
+
+}
+
+.popUpInputfield{
+
+
+    width:500px;
+    height:175px;
+    outline: 0;
+    font-size: 30px;
+
+
+}
+
+.tagsContainer{
+    display: flex;
+    flex-direction: row;
+    /* width:500px; */
+    justify-content: flex-start;
+    /* align-content: flex-start; */
+    flex-flow: row wrap;
+}
+.submitPreferencesContainer{
+
+    display: flex;
+    flex-direction: row;
+
+    align-items:center;
+}
+
+.submitPreferencesPrepend{
+
+    display: flex;
+    flex-direction: row;
+    width : 200px;
+
+
+
+}
+
+.submitButton{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 18;
+    background-color: #ffffff;
+    border-radius: 15px;width: 130px;height: 40px;
+
+}
+.submitButton:hover{
+
+    color:white;
+    background-color: black;
+   
+   }
+   .tagButtonContainer{
+
+    display: flex;
+    color:black;
+    background-color:#EFEFEF;
+    border-radius: 5px;
+    width:100px;
+    height:30px;
+    text-align: center;
+    /* justify-content: center; */
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+
+
+
+
+
+}
+
+
+.tagButtonContainer:hover{
+
+ color:white;
+ background-color: black;
+
+    
+
+}

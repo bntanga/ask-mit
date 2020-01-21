@@ -1,0 +1,14 @@
+.Sidebar-container{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+.SidebarLink{
+
+    padding: 10px;
+    background-color: #A7AEB5;
+    width: 150px;
+    margin-top: 500px;
+}

@@ -1,0 +1,12 @@
+.Tag-container{
+    padding: 5px;
+}
+.TagBlock{
+    padding: 5px;
+}
+.TagBlock-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 100px;
+}

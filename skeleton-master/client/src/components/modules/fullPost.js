@@ -60,7 +60,7 @@ let testCommentObj = {
        parentId: this.props.storyObj._id,
        likes: 0,
      }
-    console.log("this is sent ", commentObj24)
+
     post("api/comments", commentObj24).then((comment)=>
      this.setState(
        {commentObjList: this.state.commentObjList.concat(comment)})

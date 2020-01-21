@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 /**
  * @param {function} addPost
+ * @param {array} allTags
  */
 
 class PostInput extends Component{

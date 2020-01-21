@@ -83,12 +83,33 @@ router.post("/comments", (req,res)=> {
   newComment.save().then((comment)=>res.send(comment))
 })
 router.get("/comments", (req,res)=> {
-  console.log("Parent ID ", req.query.parentId)
+  // console.log("Parent ID ", req.query.parentId)
   Comment.find({parentId:req.query.parentId})
   .then((comments)=>{
-  console.log("comments queried: ", comments)
+  // console.log("comments queried: ", comments)
   res.send(comments)})
 })
+router.get("/userquestions", (req,res)=> {
+  console.log("supposed to be creator ID ",req.query.creatorId)
+  Question.find({creatorId: req.query.creatorId})
+  .then((questions)=>{
+  console.log("question objects ", questions)
+  res.send(questions)})
+
+})
+router.get("/user", (req,res)=>  
+  {console.log(req.query) 
+  User.find({_id:req.query.userId}).then((user)=>res.send(user) )})
+
+router.put("/usertags",(req, res)=>{
+  User.findById(req.user._id).then((user)=>{
+    user.subscribedTags = req.body.subscribedTags
+    user.save().then((user)=>res.send(user.subscribedTags))
+  } 
+)
+})
+// another test
+
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);

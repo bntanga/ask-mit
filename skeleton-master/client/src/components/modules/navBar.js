@@ -15,7 +15,7 @@ class NavBar extends Component{
             <div className = "RightLink-container u-inlineBlock">
                 <Link to = "/home" className = "NavBar-link">  Home </Link>
                 <Link to = "/notifications" className = "NavBar-link"> Notifications </Link>
-                <Link to = "/profilepage1" className = "NavBar-link">  Profile </Link>
+                <Link to = {`/profilepage1/${this.props.userId}`} className = "NavBar-link">  Profile </Link>
             </div>
             </nav>
         )

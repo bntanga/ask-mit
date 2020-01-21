@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FullPost from "./fullPost";
+import { get } from "../../utilities";
 
 /**
  * @param {number} userId of post creator
@@ -28,15 +29,18 @@ class QuestionsAsked extends Component{
         }
       }
     
-/*    componentDidMount(){
-            //promise should return list of story objects filtered by creatorId
-            get("api/stories", {creatorUserId: this.props.userId})
-            .then((storyObjs)=> storyObjs.map((storyObj)=>this.setState({ListOfStoryObj: this.state.ListOfStoryObj.concat([storyObj])})));
-            //probably an error in the code above
-    }
-    */
+    // componentDidMount(){
+    //   console.log(" ID being sent to backend " , this.props.userRouterId)
+    //   // testing 
+    //   get("api/user", {userId: this.props.userRouterId}).then((user)=>console.log(user))
+    //   get("api/userquestions", {creatorId: this.props.userRouterId}).then((stories)=>
+    //   this.setState({
+    //     ListOfStoryObj: stories.reverse(),
+    //   }));
+
+    // }
     render(){
-        let feed = this.state.ListOfStoryObj
+        let feed = this.props.userStories
         .map((storyObj1)=> 
         <FullPost storyObj = {storyObj1}/>
         );

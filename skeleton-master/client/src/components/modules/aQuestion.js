@@ -15,7 +15,7 @@ class AStory extends Component {
     render() {
         return (
         <div>
-            <Link to = {"/profile"} className = "u-title-arvo CreatorName">
+            <Link to = {`/profilepage1/${this.props.storyObj.creatorId}`} className = "u-title-arvo CreatorName">
             <h4 className = "CreatorName2">{this.props.storyObj.creatorName}</h4>
             </Link>
         <div className = "Story-container">
