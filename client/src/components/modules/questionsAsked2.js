@@ -1,21 +1,17 @@
 import React, { Component } from "react";
 import FullPost from "./fullPost";
 import { get } from "../../utilities";
+import "./QuestionsAsked.css";
 
 class QuestionsAsked extends Component{
     constructor(props) {
         super(props);
-        this.state = {
-            ListOfStoryObj : [],
-        }
       }
-    componentDidMount(){
-        get("/userquestions", {creatorId: this.props.userRouterId}).then((stories)=>this.setState({ListOfStoryObj: stories}));
-    }
+    
     render(){
-        let feed = this.state.ListOfStoryObj.map((story)=><FullPost storyObj = {story}/>)
+        let feed = this.props.userStories.map((story)=><FullPost storyObj = {story}/>)
         return (
-            <div>
+            <div className = "QuestionsAsked-container">
                 {feed}
             </div>
         )

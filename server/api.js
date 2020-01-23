@@ -98,7 +98,8 @@ router.get("/userquestions", (req,res)=> {
 
 })
 router.get("/user", (req,res)=>  
-  {console.log(req.query) 
+  {
+    // console.log(req.query) 
   User.find({_id:req.query.userId}).then((user)=>res.send(user) )})
 
 router.put("/usertags",(req, res)=>{

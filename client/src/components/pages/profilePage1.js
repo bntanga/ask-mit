@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import SideBar from "../modules/sideBar";
-import QuestionsAsked from "../modules/questionsAsked";
+import QuestionsAsked from "../modules/questionsAsked2.js";
 import { get } from "../../utilities.js";
-import "./profilePage1.css";
+import "./profilePage1.css"; 
 
 /**pass in userobject
  * @param {string} userName of creator
@@ -19,7 +19,7 @@ class ProfilePage1 extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            ListOfStoryObj : [testStoryObj1],
+            ListOfStoryObj : [ testStoryObj1],
         }
       }
       componentDidMount(){
@@ -31,7 +31,8 @@ class ProfilePage1 extends Component{
         //   console.log("user ID being sent to backend ", userid)
         get("/api/userquestions", {creatorId: this.props.userRouterId})
         .then((questions)=>
-        this.setState({ListOfStoryObj: this.state.ListOfStoryObj.concat(questions)}));
+        {let renderedQuestions = questions.reverse()
+        this.setState({ListOfStoryObj: renderedQuestions})});
     }
     render(){
         return(

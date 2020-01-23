@@ -8,7 +8,7 @@ import "./manageSubs2.css"
  * @param {function} addTag 
  * @param {function} removeTag
  * @param {function} unsubscribedTags
- */
+ */ 
 
  class ManageSubs extends Component{
     constructor(props) {
@@ -22,7 +22,7 @@ import "./manageSubs2.css"
         let unsubBlock = (this.props.unsubscribedTags
         .map((tag)=><div onClick= {()=>this.props.addSubscription(tag)} className = "Tag-container">{tag}</div>))
         return(
-            <div>
+            <div className = "ManageSubs-container">
                 <div>Manage your subscriptions</div>
                 <div className = "TagBlock-container">
                 Current Subscriptions 
@@ -36,4 +36,4 @@ import "./manageSubs2.css"
 
 
     }
-export default ManageSubs
+export default ManageSubs;

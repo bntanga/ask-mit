@@ -10,3 +10,7 @@
     justify-content: space-between;
     margin-top: 100px;
 }
+.ManageSubs-container{
+    display: flex;
+    flex-direction: row;
+}

@@ -63,13 +63,61 @@ class Home extends Component {
       });
       }
     }
+getCurrentDate(){
+      let today = new Date();
+      let dd = String(today.getDate()).padStart(2, '0');
+      let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      let yyyy = today.getFullYear();
+      let mmm;
+      switch(mm) {
+      case "01":
+      mmm = "Jan";
+      break;
+      case "02":
+      mmm = "Feb";
+      break;
+      case "03":
+      mmm = "Mar";
+      break;
+      case "04":
+      mmm = "Apr"
+      break;
+      case "05":
+      mmm = "May"
+      break;
+      case "06":
+      mmm = Jun;
+      break;
+      case "07":
+      mmm = Jul;
+      break;
+      case "08":
+      mmm = "Aug";
+      break;
+      case "09":
+      mmm = "Sep"
+      break;
+      case "10":
+      mmm = "Oct";
+      break;
+      case "11":
+      mmm = "Nov";
+      break;
+      case "12":
+      mmm = "Dec"
+      break;
+      }
+
+      today = mmm + ' ' + dd + ', ' + yyyy;
+      return (today)
+    }
 
     addPost = (storyContent, postTags1)=>{
       let storyObj24 = { 
                        creatorName: this.props.userObj.name,
                        creatorId: this.props.userObj._id,
                        //change to proper date
-                       time:"this time",
+                       time:this.getCurrentDate(),
                        content: storyContent,
                        likes:0,
                        //change this to user input

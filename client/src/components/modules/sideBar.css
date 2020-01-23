@@ -1,14 +1,60 @@
 .Sidebar-container{
-    margin-top: 50px;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    width: 300px;
+    left: 10px;
+    height: 80%;
+    background-color: #A7AEB5;
+    border-radius: 3px;
+    opacity: 0.9;
 
 }
-.SidebarLink{
+.SideBarLink{
 
-    padding: 50px;
-    background-color: #A7AEB5;
-    width: 150px;
-    margin-top: 500px;
+    padding: 15px 0px 15px 0px;
+    /* background-color: #A7AEB5; */
+    width: 310px;
+    /* border-radius: 4px; */
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+
+    
+}
+.SideBarName{
+    /* margin-top: 100px; */
+    font-size: 20px;
+    padding: 10px;
+
+}
+.UserBio{
+    font-style: italic;
+    font-size: 12px;
+}
+.NameBio-container{
+    /* padding: 10px; */
+    height: 160px;
+    width:300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+}
+.TextColor{
+    color: black;
+    font-size: 14px;
+}
+.QuestionsAsked{
+    border-top: 2px solid white;
+}
+.Logout{
+    border-bottom: 2px solid white;
 }
