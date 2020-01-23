@@ -4,9 +4,10 @@
     /* visibility: hidden; */
     
     display: flex;
+    position: fixed;
     /* top: 0; */
 
-    /* z-index: 99999; */
+    z-index: 99999;
 
     flex-direction: column;
     background-color: #c4c4c4;
