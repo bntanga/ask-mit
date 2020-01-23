@@ -1,0 +1,13 @@
+.App-container{
+    max-width: 1200px;
+    min-height: 700px;
+    padding: var(--m) var(--m);
+    margin: auto;
+  
+
+    /* background-color: #E5E5E5; */
+    
+}
+/* .Background-container{
+    background-color: #E5E5E5;
+} */

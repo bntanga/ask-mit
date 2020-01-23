@@ -1,0 +1,10 @@
+.GoogleButton{
+    position: absolute;
+    left: 500px;
+    top: 300px;
+    z-index: 10;
+}
+.SimmonsHall{
+    width: 40px;
+    height:40px;
+}

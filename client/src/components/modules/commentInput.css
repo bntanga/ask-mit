@@ -1,0 +1,41 @@
+.CommentInputBox{
+    width: 565px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+
+}
+
+.SubmitButton{
+    display: inline-block;
+    font-size: 12px;
+    background-color: white;
+    border-radius: 8px;
+    position: absolute;
+    right: 0;
+    align-self: center;
+
+    font-weight: 0;
+    font-weight: 1px;
+    color: #3A4B5E;
+    font-size: 10px;
+}
+.SubmitButton:hover{
+    background-color: #556474;
+    color: white;
+    cursor: pointer;
+
+
+}
+.Input-container {
+    position: relative;
+    display: flex;
+}
+/* .Input-container{
+    background-color: #EFEFEF;
+    width: 570px;
+    border-radius: 10px;
+} */
+.PlaceHolderText{
+    font-size: large;
+}

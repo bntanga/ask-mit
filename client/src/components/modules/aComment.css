@@ -1,0 +1,67 @@
+.Comment-container{
+    background-color: white;
+    width: 570px;
+    /* padding-left: 8px; 
+    padding-bottom: 8px; */
+    margin-top: 10px; 
+    margin-bottom: 0px; 
+    border-radius: 10px;
+}
+.Creator-name{
+    font-size: 14px;
+    font-weight: 800px;
+    text-decoration: none;
+    display: inline-block;
+    /* padding-top: 10px; */
+    /* padding-bottom: 5 px;
+    margin-bottom: 2 px; */
+    /* border-bottom: 0 px; */
+}
+.CommentNameTime-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.CommentTime{
+    font-weight: 1px;
+    color: #3A4B5E;
+    display: inline-block;
+    /* text-align: center; */
+    padding-top: 10px;
+    font-size: 10px;
+}
+.CommentContent{
+    font-size:12px;
+    width: 500px;
+    padding-left: 15px;
+    padding-bottom: 8px;
+    /* padding-top: 0 px;
+    margin-top: 0  px; */
+
+    
+}
+.CommentLikes-container{
+    padding-left: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 10px;
+
+}
+.heartIcon{
+    color: black;
+    font-size: 15px;
+    font-weight: 900;
+    /* border: 3px solid black; */
+}
+.heartIcon:hover{
+    cursor: pointer;
+}
+.LikesNumber{
+    font-size: 13px;
+    display: inline;
+    margin-left: 6px;
+    /* padding-bottom: 100px; */
+}
