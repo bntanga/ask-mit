@@ -11,8 +11,6 @@ let test = ["Academics", "Social", "Athletics", "Business", "Dorm life", "Mental
         super(props);
       }
     render(){
-        console.log("tags   " , this.props.subscribedTags)
-        console.log("test ", ["words", "can", "be"])
         let tags = this.props.subscribedTags
                 .map((tag)=> <div className = "Tag-container" onClick = {()=>this.props.handleFilter(tag)}>{tag}</div>)
         return (

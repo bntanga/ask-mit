@@ -5,6 +5,7 @@ import "./home.css";
 import PostInput from "../modules/postInput";
 import { post } from "../../utilities";
 import { get } from "../../utilities";
+import {put } from "../../utilities";
 
 import PostPopup from "../modules/postPopup.js";
 
@@ -63,6 +64,14 @@ class Home extends Component {
       });
       }
     }
+      updateLikes= (isLiked, Id) =>{
+        put("api/questionlikes",{_id:Id, add:!isLiked}).then((question)=>
+        get("api/questions",{postTags: this.props.subscribedTags}))
+        .then((questionsList)=>
+        {let renderedList = questionsList.reverse()
+          this.setState({questions:renderedList})
+     })}
+
 getCurrentDate(){
       let today = new Date();
       let dd = String(today.getDate()).padStart(2, '0');
@@ -171,7 +180,8 @@ getCurrentDate(){
                 <Feed
                 creatorId = {this.props.userObj._id} 
                 userName = {this.props.userObj.name}
-                stories = {this.state.questions}/>
+                stories = {this.state.questions}
+                updateLikes = {this.updateLikes}/>
               </div>
             </div>
             </div>

@@ -17,6 +17,7 @@ import "./feed.css";
         .map((storyObj)=> <FullPost 
         storyObj = {storyObj}
         userName = {this.props.userName}
+        updateLikes = {this.props.updateLikes}
         />)
         return(
             <div className = "FeedContainer">

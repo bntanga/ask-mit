@@ -17,18 +17,21 @@ class AComment extends Component {
             commentLikes: this.props.commentObj.likes
         }
       }
-    isLiked(){
+    isLiked=()=>{
         if (this.state.liked){
             this.setState({liked: false,
-                          commentLikes: this.state.commentLikes --
             })
-
+            this.state.commentLikes --
         } else {
             this.setState({liked:true,
-                          commentLikes: this.state.commentLikes ++
                 })
+            this.state.commentLikes ++
             }
         }
+    onClick = () => { 
+        this.isLiked();
+        this.props.updateLikes(this.state.liked, this.props.commentObj._id)
+    }
     render (){
         return (
         <div className = "Comment-container">
@@ -41,7 +44,8 @@ class AComment extends Component {
             {/* <FontAwesomeIcon icon = {faHeart} className = "heartIcon"/>  */}
             <FontAwesomeIcon icon = {faHeart} 
             className = "heartIcon" 
-            onClick = {()=>{()=>this.props.updateLikes(this.state.liked, this.props.commentObj._id);this.isLiked()}}/>
+            onClick = {this.onClick}/>
+             {/* onClick = {()=>{()=>this.props.updateLikes(this.state.liked, this.props.commentObj._id)};this.isLiked()}/> */}
              <div className = "LikesNumber"> {this.state.commentLikes}</div>
             </div>
         </div>)

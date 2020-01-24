@@ -12,7 +12,7 @@ export default class PostPopup extends Component{
     super(props);
     this.state = {
 
-        tags : ["Academics","Social","Technology","Business","Career","Sports"],
+        tags : [],
         value: "",
         addedTags: [],
 

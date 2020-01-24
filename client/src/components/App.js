@@ -37,10 +37,16 @@ class App extends Component {
     super(props);
     this.state = {
       userId: undefined,
-      allTags: ["General","Academics", "Social", "Food", "Dorm Life", "Athletics", "Business"],
+      allTags: ["General", "Academic", "Social", "Business",
+       "Mental Health", "Food", "Clubs","Sports", "Other",
+       "Class of 20", "Class of 21", "Class of 22", "Class of 23",
+       "Simmons Hall", "Baker House", "New House", "MacGregor House", 
+       "Random Hall", "East Campus", "McCormick Hall", "Next House" ],
       user: '',
       unsubscribedTags: [],
       subscribedTags: [],
+      userBio: "",
+      msgFromServer: ""
     };
 
   }
@@ -50,28 +56,44 @@ class App extends Component {
     return difference;
   }
 
+  // addSubscription = (tag) => {
+  //   post(`/api/addsubscription?tag=${tag}`)
+  //   .then((user) => {
+  //     const index = this.state.unsubscribedTags.indexOf(tag);
+  //     let newUnsubTags;
+  //     if (index > -1) {
+  //       newUnsubTags = [...this.state.unsubscribedTags].splice(index, 1)
+  //     }
+  //   // this.state.unsubscribedTags.splice(index, 1);
+  //     console.log(user.subscribedTags);
+  //     this.setState({subscribedTags: user.subscribedTags, unsubscribedTags: newUnsubTags});
+  //   })
+  // }
+
   addSubscription = (tag) => {
-    this.state.subscribedTags.push(tag)
+    if (this.state.subscribedTags.includes(tag)){
+      return ("non")
+    }
+    
     const index = this.state.unsubscribedTags.indexOf(tag);
     if (index > -1) {
     this.state.unsubscribedTags.splice(index, 1);
-    this.setState({subscribedTags: this.state.subscribedTags})
+    this.state.subscribedTags.push(tag)
+    put("api/usertags",{subscribedTags: this.state.subscribedTags})
+    .then((user)=> this.setState({subscribedTags:user.subscribedTags}))
       }
-      //leap of faith
-      // put("api/usertags",{subscribedTags: this.state.subscribedTags})
-      put("api/usertags",{subscribedTags: this.state.subscribedTags})
-    .then((tagList)=> this.setState({subscribedTags:tagList}))
     }
   removeSubscription = (tag) => {
+
     this.state.unsubscribedTags.push(tag)
     const index = this.state.subscribedTags.indexOf(tag);
     if (index > -1) {
     this.state.subscribedTags.splice(index, 1);
-    this.setState({subscribedTags: this.state.subscribedTags})
-      }
-    // another leap of faith
+    // this.setState({subscribedTags: this.state.subscribedTags})
     put("api/usertags",{subscribedTags: this.state.subscribedTags})
-    .then((tagList)=> this.setState({subscribedTags:tagList}))
+    .then((user)=> this.setState({subscribedTags:user.subscribedTags}))
+      }
+    
 
   }
 
@@ -88,11 +110,11 @@ class App extends Component {
           user: user,
           subscribedTags: user.subscribedTags,
           unsubscribedTags: unsub,
-                      });
+          userBio: user.bio,
+        });
       }
     });
   }
-
 
   handleLogin = (res) => {
     console.log(`Logged in as: ${res.profileObj.name }`);
@@ -103,8 +125,9 @@ class App extends Component {
         user: user,
         subscribedTags: user.subscribedTags,
         unsubscribedTags: unsub,
+        userBio: user.bio,
       });
-      post("/api/initsocket", { socketid: socket.id });
+      // post("/api/initsocket", { socketid: socket.id });
     });
   };
 

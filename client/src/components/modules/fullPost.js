@@ -44,8 +44,26 @@ let testCommentObj = {
             // test objects put in
             commentObjList : [],
             showComments : true,
+            liked: false,
+            questionLikes: this.props.storyObj.likes
         };
       }
+      isLiked=()=>{
+        if (this.state.liked){
+            this.setState({liked: false,
+            })
+            this.state.questionLikes --
+        } else {
+            this.setState({liked:true,
+                })
+            this.state.questionLikes ++
+            }
+          console.log("question likes ",this.state.questionLikes)
+        }
+      onClick = () => { 
+        this.isLiked();
+        this.props.updateLikes(this.state.liked, this.props.storyObj._id)
+          }
    displayComments=()=>{
         if (this.state.showComments){
           this.setState({showComments: false})
@@ -118,12 +136,15 @@ let testCommentObj = {
      )
    }
    updateLikes= (isLiked, Id) =>{
-        if (isLiked){
-          //must return new comment obj
-          put("api/commentlikes", {_id: Id, add: false})
-   }else{
-    put("api/commentlikes", {_id: Id, add: true})
-   }
+     put("/api/commentlikes",{_id:Id, add:!isLiked}).then((comment)=>
+     get("/api/comments",{parentId: comment.parentId}).then((comments)=>
+     this.setState({commentObjList: comments})));
+  //       if (isLiked){
+  //         //must return new comment obj
+  //         put("api/commentlikes", {_id: Id, add: false})
+  //  }else{
+  //   put("api/commentlikes", {_id: Id, add: true})
+  //  }
   }
     componentDidMount(){
       get("/api/comments",{parentId: this.props.storyObj._id})
@@ -139,8 +160,9 @@ let testCommentObj = {
                 <div className = "Likes-container">
                     <FontAwesomeIcon icon = {faHeart} 
                     className = "heartIcon" 
+                    onClick = {this.onClick}
                     />
-                    <div className = "LikesNumber">{this.props.storyObj.likes}</div>
+                    <div className = "LikesNumber">{this.state.questionLikes}</div>
                 </div>
                 <div className = "ShowCommentsButon u-title-arvo" onClick = {this.displayComments}>Hide comments</div>
               </div>
@@ -160,8 +182,9 @@ let testCommentObj = {
               <div className = "Likes-container">
                 <FontAwesomeIcon icon = {faHeart} 
                 className = "heartIcon" 
+                onClick = {this.onClick}
                 />
-             <div className = "LikesNumber">{this.props.storyObj.likes}</div>
+             <div className = "LikesNumber">{this.state.questionLikes}</div>
             </div>
             <div className = "ShowCommentsButon u-title-arvo" onClick = {this.displayComments}>Show comments</div>
             </div>

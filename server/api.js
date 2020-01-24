@@ -102,18 +102,70 @@ router.get("/user", (req,res)=>
     // console.log(req.query) 
   User.find({_id:req.query.userId}).then((user)=>res.send(user) )})
 
+
+router.post("/addsubscription", (req, res) => {
+  let tag = req.query.tag;
+
+  User.findById(req.user._id).then((user)=> {
+    let check = user.subscribedTags.includes(tag);
+    console.log(check);
+    if (!check) {
+      user.subscribedTags = [...user.subscribedTags].concat(tag);
+      req.user.subscribedTags = user.subscribedTags;
+    }
+    // remove from unsubscribed
+    // const index = user.unsubscribedTags.indexOf(tag);
+    // if (index > -1) {
+    //   user.unsubscribedTags = [...user.unsubscribedTags].splice(index, 1);
+    // }
+    
+    user.save().then(user => res.send(user));
+  })
+});
+
+router.post("/removesubscription", (req, res) => {
+  let tag = req.query.tag;
+
+  User.findById(req.user._id).then((user)=> {
+    let check = user.subscribedTags.includes(tag);
+    console.log(check);
+    if (check) {
+      let index = user.subscribedTags.indexOf(tag)
+      user.subscribedTags = [...user.subscribedTags].splice(index, 1);
+      req.user.subscribedTags = user.subscribedTags;
+    }
+    // remove from unsubscribed
+    // const index = user.unsubscribedTags.indexOf(tag);
+    // if (index > -1) {
+    //   user.unsubscribedTags = [...user.unsubscribedTags].splice(index, 1);
+    // }
+    
+    user.save().then(user => res.send(user));
+  })
+});
 router.put("/usertags",(req, res)=>{
   User.findById(req.user._id).then((user)=>{
     user.subscribedTags = req.body.subscribedTags
-    user.save().then((user)=>res.send(user.subscribedTags))
+    user.save().then((user)=>res.send(user))
+    req.user.subscribedTags = user.subscribedTags;
   } 
 )
 })
 router.put("/commentlikes", (req,res)=>{
   Comment.findById(req.body._id).then((commentFound)=>{
-    if(req.body.add) {commentFound.likes = commentFound.likes ++}
-    else {commentFound.likes = commentFound.likes ++}
+    if(req.body.add) {commentFound.likes ++}
+    else {commentFound.likes --}
+    commentFound.save()
     res.send(commentFound)
+  })
+})
+router.put("/questionlikes",(req,res)=>{
+  Question.findById(req.body._id).then((questionFound)=>{
+    if(req.body.add){questionFound.likes++}
+    else{questionFound.likes--}
+    questionFound.save()
+    console.log("Question found by api ", questionFound)
+    res.send(questionFound)
   })
 })
 
