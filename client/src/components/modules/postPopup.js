@@ -46,7 +46,7 @@ export default class PostPopup extends Component{
 
         let Tags = this.props.userTags.map((tagText)=>(
 
-            <div className="tagButtonContainer" onClick={() => this.tagClick(tagText)}>
+            <div className="tagButton" onClick={() => this.tagClick(tagText)}>
 
                 {tagText}
 
@@ -59,54 +59,44 @@ export default class PostPopup extends Component{
 
             <div className={this.props.className}>
 
-                {/* <span className="popUpContainerText">
-
-                What is your question?
-
-                </span> */}
-                <input className="popUpInputfield"
+                <textarea className="popUpInputfield"
                 type="text"
                 defaultValue= "Post Something"
                 placeholder="Whats your question?"
                 onChange={this.handleChange}
                 value= {this.state.value}
                 />
-
+                 <span className="CheckBoxContainer u-title-arvo">
+                        <input type="checkbox"/>
+                        Submit Anonymously
+                </span>
+                <div className = "tagContainerText">Select tags:</div>
                 <div className="tagsContainer">
-
                     {Tags}
 
                 </div>
 
-                <div className="submitPreferencesContainer">
+
  
-                    <div className="submitPreferencesPrepend">
-                    <input type="checkbox"/>
+                    {/* <div className="submitPreferencesPrepend"> */}
+                   
 
-                    <span className="checkBoxTitle">
-                        Submit Anonymously
-                    </span>
+                    {/* </div> */}
+
+                    <div className = "SubmitCancel-container">
+                        
+                        <div className = "CancelButton u-title-arvo"
+                        onClick = {this.props.handleSubmit}>
+                            Cancel
+                        </div>
+                        <div
+                        onClick= {this.handleSubmit}
+                        className="submitButton u-title-arvo"
+                        >
+                            Submit
+                        </div>
                     </div>
 
-                    <div
-                    onClick= {this.handleSubmit}
-                    className="submitButton"
-                    >
-
-                        Submit
-
-                    </div>
-                    {/* <button
-                    className="submitButton"
-                    type="submit"
-                    value="Submit"
-                    onClick={this.handleSubmit}
-                    >
-                    Submit
-                    </button> */}
-
-
-                </div>
             </div>
                 
 

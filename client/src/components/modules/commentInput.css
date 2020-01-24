@@ -3,6 +3,8 @@
     height: 50px;
     background-color: white;
     border-radius: 10px;
+    border-color: white;
+
 
 }
 
@@ -12,7 +14,7 @@
     background-color: white;
     border-radius: 8px;
     position: absolute;
-    right: 0;
+    right: 2px;
     align-self: center;
 
     font-weight: 0;

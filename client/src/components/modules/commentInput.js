@@ -28,7 +28,7 @@ class CommentInput extends Component{
     render() {
         return (
           <div className = "Input-container">
-            <input
+            <textarea
               type="text"
               placeholder="What's your response?"
               onChange={this.handleChange}

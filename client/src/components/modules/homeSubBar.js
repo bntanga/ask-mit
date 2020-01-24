@@ -6,6 +6,8 @@ import "./homeSubBar.css";
  */
 
 let test = ["Academics", "Social", "Athletics", "Business", "Dorm life", "Mental health", "Clubs"]
+
+
  class HomeSubBar extends Component{
     constructor(props) {
         super(props);

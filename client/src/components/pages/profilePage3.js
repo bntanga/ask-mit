@@ -4,7 +4,7 @@ import ManageSubsTest from "../modules/manageSubsTest";
 import "./profilePage3.css";
 
 /**pass in userobject
- * @param {string} userName of creator
+ * @param {string} userName of creator 
  * @param {array} subscribedTags of user
  * @param {array} allTags in app
  * @param {function} removeTag from user list

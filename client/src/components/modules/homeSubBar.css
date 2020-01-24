@@ -6,13 +6,9 @@
     left: 150px;
     position: fixed;
     top: 150px;
-
-    /* font-family: 'Archivo Narrow', sans-serif; */
 }
 .Tag-container{
     background-color: white;
-    /* border-bottom: 5px solid #EFEFEF; */
-    /* padding: 20px; */
     
     width: 200px;
     color: black;

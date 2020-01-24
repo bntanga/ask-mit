@@ -147,6 +147,8 @@ getCurrentDate(){
     }
     handleSubmit(){
       this.setState({className:"popUpContainerAlternate"});
+      this.setState({inputClassName:"InputClick"});
+
     }
     handleFilter(filterTag){
       get("api/questions", {postTags:[filterTag]})

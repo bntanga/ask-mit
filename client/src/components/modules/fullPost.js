@@ -6,6 +6,7 @@ import CommentInput from "./commentInput";
 import { get, post, put } from "../../utilities.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
 
 /** receives 
  * @Param {object} storyObj
@@ -158,7 +159,7 @@ let testCommentObj = {
                 <AStory storyObj = {this.props.storyObj} postTags = {this.props.storyObj.postTags}/>
               <div className = "LikesCommentButton-container">
                 <div className = "Likes-container">
-                    <FontAwesomeIcon icon = {faHeart} 
+                    <FontAwesomeIcon icon = {this.state.liked ? faHeartFilled : faHeart}
                     className = "heartIcon" 
                     onClick = {this.onClick}
                     />
@@ -180,7 +181,7 @@ let testCommentObj = {
             <AStory storyObj = {this.props.storyObj} postTags = {this.props.storyObj.postTags}/>
           <div className = "LikesCommentButton-container">
               <div className = "Likes-container">
-                <FontAwesomeIcon icon = {faHeart} 
+                <FontAwesomeIcon icon = {this.state.liked ? faHeartFilled : faHeart}
                 className = "heartIcon" 
                 onClick = {this.onClick}
                 />
