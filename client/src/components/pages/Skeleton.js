@@ -18,10 +18,6 @@ class Skeleton extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = {
-      simmons: "simmons",
-      baker: "baker"
-        };
   }
 
   componentDidMount() {
@@ -34,7 +30,6 @@ class Skeleton extends Component {
   
 
   render() {
-    let tagObj = {name:"simmons2222", url:simmons}
     let tag = "simmons"
     let imgsrc;
     return (

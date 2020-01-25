@@ -80,7 +80,32 @@ router.post("/comments", (req,res)=> {
     parentId: req.body.parentId,
     likes: req.body.likes
   })
-  newComment.save().then((comment)=>res.send(comment))
+  newComment.save()
+  .then((comment)=>{
+  res.send(comment)
+  Question.findById(comment.parentId)
+  .then((questionFound)=> User.findById(questionFound.creatorId).then((userFound)=>{ 
+    let newNotification;
+    newNotification = {
+      senderName: comment.creatorName,
+      commentContent: comment.content,
+      commentTime: comment.time,
+      questionAnswered: questionFound.content,
+      isRead: false, 
+    }
+  userFound.notifications.push(newNotification);
+  console.log(" notification found in api" , newNotification)
+  userFound.save();
+  //mayyybbeeee
+  console.log("Is this the creator ID  ", questionFound.creatorId)
+  socket.getSocketFromUserID(questionFound.creatorId).emit("notification", newNotification);
+      
+      }
+  
+  ))
+  
+  })
+
 })
 router.get("/comments", (req,res)=> {
   // console.log("Parent ID ", req.query.parentId)

@@ -27,7 +27,9 @@ function getOrCreateUser(user) {
       name: user.name,
       googleid: user.sub,
       subscribedTags: ["General"],
-      bio: "Random test bio"
+      bio: "Random test bio",
+      notifications: [],
+
     });
 
     return newUser.save();

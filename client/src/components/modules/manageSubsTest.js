@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
 
 const ALL_DORMS = ["Simmons Hall", "Baker House", "New House", "MacGregor House", 
-"Random Hall", "East Campus", "McCormick Hall", "Next House"];
+"Random Hall", "East Campus", "McCormick Hall", "Next House", "Burton Conner"];
 
 const ALL_CLASS_YEARS = ["Class of 20", "Class of 21", "Class of 22", "Class of 23"];
 

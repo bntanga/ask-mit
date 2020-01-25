@@ -27,6 +27,13 @@ let testUserObject = {
   googleid: "123",
   subscribedTags: ["Academics",  "Dorm Life"]
 }
+let testNotification = {
+      senderName: " Mr Bringles",
+      commentContent: "Halllooooooooo",
+      commentTime: "this time",
+      questionAnswered: "Ndechikumbwa chigelo chaba headdddd",
+      isRead: false, 
+}
 
 /**
  * Define the "App" component as a class.
@@ -41,12 +48,12 @@ class App extends Component {
        "Mental Health", "Food", "Clubs","Sports", "Other",
        "Class of 20", "Class of 21", "Class of 22", "Class of 23",
        "Simmons Hall", "Baker House", "New House", "MacGregor House", 
-       "Random Hall", "East Campus", "McCormick Hall", "Next House" ],
+       "Random Hall", "East Campus", "McCormick Hall", "Next House", "Burton Conner" ],
       user: '',
       unsubscribedTags: [],
       subscribedTags: [],
       userBio: "",
-      msgFromServer: ""
+      notifications: [],
     };
 
   }
@@ -56,19 +63,7 @@ class App extends Component {
     return difference;
   }
 
-  // addSubscription = (tag) => {
-  //   post(`/api/addsubscription?tag=${tag}`)
-  //   .then((user) => {
-  //     const index = this.state.unsubscribedTags.indexOf(tag);
-  //     let newUnsubTags;
-  //     if (index > -1) {
-  //       newUnsubTags = [...this.state.unsubscribedTags].splice(index, 1)
-  //     }
-  //   // this.state.unsubscribedTags.splice(index, 1);
-  //     console.log(user.subscribedTags);
-  //     this.setState({subscribedTags: user.subscribedTags, unsubscribedTags: newUnsubTags});
-  //   })
-  // }
+
  
   addSubscription = (tag) => {
     if (this.state.subscribedTags.includes(tag)){
@@ -91,7 +86,7 @@ class App extends Component {
     this.state.subscribedTags.splice(index, 1);
     // this.setState({subscribedTags: this.state.subscribedTags})
     put("api/usertags",{subscribedTags: this.state.subscribedTags})
-    .then((user)=> {console.log(" user obj returned " ,user.subscribedTags) 
+    .then((user)=> {
       this.setState({subscribedTags:user.subscribedTags}, callback)})
     
       }
@@ -113,9 +108,14 @@ class App extends Component {
           subscribedTags: user.subscribedTags,
           unsubscribedTags: unsub,
           userBio: user.bio,
+          notifications: user.notifications,
         });
       }
     });
+    socket.on("notification", (notification) => {
+      this.state.notifications.push(notification)
+      this.setState({notifications: this.state.notifications}, console.log("Is state being set ", this.state.notifications))
+    })
   }
 
   handleLogin = (res) => {
@@ -128,6 +128,7 @@ class App extends Component {
         subscribedTags: user.subscribedTags,
         unsubscribedTags: unsub,
         userBio: user.bio,
+        notifications: user.notifications,
       }, () => {
         navigate("/home")
       });
@@ -150,7 +151,10 @@ class App extends Component {
       
 
  
-        <NavBar userId = {this.state.userId}/>
+        <NavBar 
+        userId = {this.state.userId}
+        notifications = {this.state.notifications}
+        />
         <div className =  "App-container">
         <Router>
           <Skeleton
