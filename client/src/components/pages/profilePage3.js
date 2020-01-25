@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SideBar from "../modules/sideBar";
-import ManageSubsTest from "../modules/manageSubsTest";
+import ManageSubsTest from "../modules/manageSubsTest"; 
 import "./profilePage3.css";
 
 /**pass in userobject
@@ -18,7 +18,11 @@ class ProfilePage3 extends Component{
     render(){
         return(
             <div className = "ProfilePage3-container">
-                <SideBar userName = {this.props.userName}/>
+                <SideBar 
+                userName = {this.props.userName}
+                userId = {this.props.userId}
+                userRouterId = {this.props.userRouterId}
+                />
                 <ManageSubsTest
                 subscribedTags = {this.props.subscribedTags}
                 addSubscription = {this.props.addSubscription}

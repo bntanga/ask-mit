@@ -41,7 +41,7 @@ class Home extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             questions: [],
-            className:"popUpContainerAlternate",
+            isPopupVisible:false,
             inputClassName:"InputClick u-title-arvo",
         }
       }
@@ -140,13 +140,13 @@ getCurrentDate(){
 
     handlePopUp(){
 
-      this.setState({className:"popUpContainer"});
+      this.setState({isPopupVisible:true});
       this.setState({inputClassName:"InputClickAlternate"});
 
 
     }
     handleSubmit(){
-      this.setState({className:"popUpContainerAlternate"});
+      this.setState({isPopupVisible:false});
       this.setState({inputClassName:"InputClick"});
 
     }
@@ -163,11 +163,15 @@ getCurrentDate(){
     render(){
         return(
             <div className="homeContainer">
-            <PostPopup className={this.state.className} 
+            { this.state.isPopupVisible ?
+              <PostPopup
             addPost = {this.addPost} 
             userTags = {this.props.subscribedTags}
             handleSubmit = {this.handleSubmit}
             />
+          :
+          null
+          }
            
 
             

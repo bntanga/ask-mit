@@ -42,6 +42,12 @@ export default class PostPopup extends Component{
 
     }
 
+    clickOffPopup = event => {
+        this.props.handleSubmit();
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
     render(){
 
         let Tags = this.props.userTags.map((tagText)=>(
@@ -56,49 +62,49 @@ export default class PostPopup extends Component{
         ))
 
         return(
+            <div className="PostPopup-layer" onClick={this.clickOffPopup}>
+                <div className="popUpContainer" onClick={event => event.stopPropagation()}>
 
-            <div className={this.props.className}>
+                    <textarea className="popUpInputfield"
+                    type="text"
+                    defaultValue= "Post Something"
+                    placeholder="Whats your question?"
+                    onChange={this.handleChange}
+                    value= {this.state.value}
+                    />
+                    <span className="CheckBoxContainer u-title-arvo">
+                            <input type="checkbox"/>
+                            Submit Anonymously
+                    </span>
+                    <div className = "tagContainerText">Select tags:</div>
+                    <div className="tagsContainer">
+                        {Tags}
 
-                <textarea className="popUpInputfield"
-                type="text"
-                defaultValue= "Post Something"
-                placeholder="Whats your question?"
-                onChange={this.handleChange}
-                value= {this.state.value}
-                />
-                 <span className="CheckBoxContainer u-title-arvo">
-                        <input type="checkbox"/>
-                        Submit Anonymously
-                </span>
-                <div className = "tagContainerText">Select tags:</div>
-                <div className="tagsContainer">
-                    {Tags}
-
-                </div>
-
-
- 
-                    {/* <div className="submitPreferencesPrepend"> */}
-                   
-
-                    {/* </div> */}
-
-                    <div className = "SubmitCancel-container">
-                        
-                        <div className = "CancelButton u-title-arvo"
-                        onClick = {this.props.handleSubmit}>
-                            Cancel
-                        </div>
-                        <div
-                        onClick= {this.handleSubmit}
-                        className="submitButton u-title-arvo"
-                        >
-                            Submit
-                        </div>
                     </div>
 
-            </div>
-                
+
+    
+                        {/* <div className="submitPreferencesPrepend"> */}
+                    
+
+                        {/* </div> */}
+
+                        <div className = "SubmitCancel-container">
+                            
+                            <div className = "CancelButton u-title-arvo"
+                            onClick = {this.props.handleSubmit}>
+                                Cancel
+                            </div>
+                            <div
+                            onClick= {this.handleSubmit}
+                            className="submitButton u-title-arvo"
+                            >
+                                Submit
+                            </div>
+                        </div>
+
+                </div>
+            </div>    
 
 
 

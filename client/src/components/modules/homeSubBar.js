@@ -18,7 +18,7 @@ let test = ["Academics", "Social", "Athletics", "Business", "Dorm life", "Mental
         return (
             <div className = "HomeSubBar-container u-title-arvo">
                 <div className = "HomeSubBarText">Filter by:</div>
-                <div>{tags}</div>
+                {tags}
             </div>
         )
     }  

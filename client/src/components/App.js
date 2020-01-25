@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Router } from "@reach/router";
+import { Router, navigate } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import NavBar from "./modules/navBar";
@@ -83,7 +83,7 @@ class App extends Component {
     .then((user)=> this.setState({subscribedTags:user.subscribedTags}))
       }
     }
-  removeSubscription = (tag) => {
+  removeSubscription = (tag, callback) => {
 
     this.state.unsubscribedTags.push(tag)
     const index = this.state.subscribedTags.indexOf(tag);
@@ -92,7 +92,7 @@ class App extends Component {
     // this.setState({subscribedTags: this.state.subscribedTags})
     put("api/usertags",{subscribedTags: this.state.subscribedTags})
     .then((user)=> {console.log(" user obj returned " ,user.subscribedTags) 
-      this.setState({subscribedTags:user.subscribedTags})})
+      this.setState({subscribedTags:user.subscribedTags}, callback)})
     
       }
     
@@ -128,6 +128,8 @@ class App extends Component {
         subscribedTags: user.subscribedTags,
         unsubscribedTags: unsub,
         userBio: user.bio,
+      }, () => {
+        navigate("/home")
       });
       // post("/api/initsocket", { socketid: socket.id });
     });
@@ -160,7 +162,7 @@ class App extends Component {
           <ProfilePage1 
           path = "/profilepage1/:userRouterId"
           userName = {this.state.user.name}
-          userId = {this.state.user._id}
+          userId = {this.state.userId}
           />
 
           < ProfilePage3 
@@ -170,6 +172,7 @@ class App extends Component {
           unsubscribedTags = {this.state.unsubscribedTags}
           addSubscription= {this.addSubscription}
           removeSubscription = {this.removeSubscription}
+          userId = {this.setState.userId}
           />
 
           <Home 

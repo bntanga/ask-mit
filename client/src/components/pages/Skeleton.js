@@ -4,6 +4,9 @@ import  simmons from "./images/simmons.jpg";
 import baker from "./images/baker.jpg";
 
 
+const imageMap = {
+  "simmons": simmons,
+}
 
 import "../../utilities.css";
 import "./Skeleton.css";
@@ -32,12 +35,13 @@ class Skeleton extends Component {
 
   render() {
     let tagObj = {name:"simmons2222", url:simmons}
+    let tag = "simmons"
     let imgsrc;
     return (
       <>
 
         <div className = "GoogleButton">
-        <img src = {"simmons"} className="SimmonsHall"/>
+        <img src = {imageMap[tag]} className="SimmonsHall"/>
           This is the landing page. Login and click and go to manage subscriptions. Pick subscriptions and view them in home.
         {this.props.userId ? (
           <GoogleLogout

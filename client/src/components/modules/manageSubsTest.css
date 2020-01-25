@@ -20,9 +20,9 @@
 .ManageSubs-container{
     display: flex;
     flex-direction: row;
-    max-height: 600px;
+    /* max-height: 600px; */
     /* width: 100%; */
-    width: 600px;
+    width: 1400px;
     justify-content: space-between;
 }
 
@@ -61,10 +61,12 @@
 .SubscribedBlock{
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   /* margin-right: 400px; */
   margin-top: 25px;
   /* position: relative; */
+  max-height: 600px;
+  margin-left: 270px;
 
 
 }
@@ -72,8 +74,10 @@
   /* position: relative; */
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   margin-top: 25px;
+  max-height: 600px;
+  margin-right: 350px;
   /* left: 300px; */
   /* margin-left: 300px; */
 }

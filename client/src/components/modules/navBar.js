@@ -8,6 +8,7 @@ class NavBar extends Component{
         super(props);
       }
     render() {
+        if (this.props.userId){
         return (
             <nav className="NavBar-container u-title-arvo" >
             <Link to = "/home" className = "NavBar-logo">
@@ -20,7 +21,21 @@ class NavBar extends Component{
                 <Link to="/" className = "NavBar-link">Logout</Link>
             </div>
             </nav>
-        )
+        )}
+        else{
+            return (
+            <nav className="NavBar-container u-title-arvo" >
+            <div className = "NavBar-logo">
+                 <div className = "Logo-ask u-inlineBlock">ask</div><div className = "Logo-MIT u-inlineBlock"> MIT</div>
+            </div>
+            <div className = "RightLink-container u-inlineBlock">
+                {/* <Link to = "/notifications" className = "NavBar-link"> Notifications </Link> */}
+                <Link to="/" className = "NavBar-link">Login</Link>
+            </div>
+            </nav>
+
+            )
+        }
     }
 }
 
