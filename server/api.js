@@ -90,10 +90,8 @@ router.get("/comments", (req,res)=> {
   res.send(comments)})
 })
 router.get("/userquestions", (req,res)=> {
-  console.log("supposed to be creator ID ",req.query.creatorId)
   Question.find({creatorId: req.query.creatorId})
   .then((questions)=>{
-  console.log("question objects ", questions)
   res.send(questions)})
 
 })
@@ -108,7 +106,6 @@ router.post("/addsubscription", (req, res) => {
 
   User.findById(req.user._id).then((user)=> {
     let check = user.subscribedTags.includes(tag);
-    console.log(check);
     if (!check) {
       user.subscribedTags = [...user.subscribedTags].concat(tag);
       req.user.subscribedTags = user.subscribedTags;
@@ -128,7 +125,6 @@ router.post("/removesubscription", (req, res) => {
 
   User.findById(req.user._id).then((user)=> {
     let check = user.subscribedTags.includes(tag);
-    console.log(check);
     if (check) {
       let index = user.subscribedTags.indexOf(tag)
       user.subscribedTags = [...user.subscribedTags].splice(index, 1);
@@ -164,7 +160,6 @@ router.put("/questionlikes",(req,res)=>{
     if(req.body.add){questionFound.likes++}
     else{questionFound.likes--}
     questionFound.save()
-    console.log("Question found by api ", questionFound)
     res.send(questionFound)
   })
 })
