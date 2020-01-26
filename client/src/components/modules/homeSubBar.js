@@ -71,11 +71,11 @@ let test = ["Academics", "Social", "Athletics", "Business", "Dorm life", "Mental
                 className = "Tag-container" 
                 onClick = {()=>this.props.handleFilter(tag)}>
                     <img src = {imageMap[tag]} className="ImageTag"/>
-                    {tag}
+                    {tag} <div></div>
                     </div>)
         return (
             <div className = "HomeSubBar-container u-title-arvo">
-                <div className = "HomeSubBarText">Filter by:</div>
+                <div className = "HomeSubBarText">Your Subscriptions</div>
                 {tags}
             </div>
         )

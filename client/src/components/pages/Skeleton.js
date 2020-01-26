@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
-import  simmons from "./images/simmons.jpg";
-import baker from "./images/baker.jpg";
+import { Router, navigate } from "@reach/router";
 
-
-const imageMap = {
-  "simmons": simmons,
-}
 
 import "../../utilities.css";
 import "./Skeleton.css";
@@ -30,22 +25,20 @@ class Skeleton extends Component {
   
 
   render() {
-    let tag = "simmons"
-    let imgsrc;
     return (
       <>
 
         <div className = "GoogleButton">
-        <img src = {imageMap[tag]} className="SimmonsHall"/>
           This is the landing page. Login and click and go to manage subscriptions. Pick subscriptions and view them in home.
-        {this.props.userId ? (
-          <GoogleLogout
+        {this.props.userId ? 
+          // navigate("/home")
+          <GoogleLogout 
             clientId={GOOGLE_CLIENT_ID}
             buttonText="Logout"
             onLogoutSuccess={this.props.handleLogout}
             onFailure={(err) => console.log(err)}
           />
-        ) : (
+         : (
           <GoogleLogin
             clientId={GOOGLE_CLIENT_ID}
             buttonText="Login"

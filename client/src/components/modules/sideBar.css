@@ -8,9 +8,10 @@
     width: 300px;
     left: 10px;
     height: 80%;
-    background-color: #A7AEB5;
+    background-color: #727965;
     border-radius: 3px;
     opacity: 0.9;
+    filter: brightness(130%);
 
 }
 .SideBarLink{

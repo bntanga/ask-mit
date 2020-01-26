@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import "./navBar.css";
-import Notifications from "./notificationsBlock.js";
+import NotificationsBlock from "./notificationsBlock.js";
 
 
 class NavBar extends Component{
@@ -14,28 +14,46 @@ class NavBar extends Component{
 
 
     showNotifications=()=>{
-        if (this.state.displayNotifications){
-            this.setState({displayNotifications: false})
+        if (!this.state.displayNotifications){
+            this.setState({displayNotifications: true})}
+        else{this.setState({displayNotifications:false})
+            this.props.makeNotificationsRead();
         }
-        else{this.setState({displayNotifications:true})}
+        
     }
+    // hideNotifications= event =>{
+    //     event.preventDefault();
+    //     event.stopPropagation();
+    //     this.props.makeNotificationsRead();
+    //     if (this.state.displayNotifications){
+    //         this.setState({displayNotifications:false})
+    //     }
+    // }
+
     render() {
         console.log("Navbar notifications ", this.props.notifications)
         if (this.props.userId){
         return (
+            // <div className = "NotificationsLayer" onClick = {this.hideNotifications}>
             <nav className="NavBar-container u-title-arvo" >
             <Link to = "/home" className = "NavBar-logo">
                  <div className = "Logo-ask u-inlineBlock">ask</div><div className = "Logo-MIT u-inlineBlock"> MIT</div>
             </Link>
             <div className = "RightLink-container u-inlineBlock">
                 <Link to = "/home" className = "NavBar-link">  Home </Link>
-                <span className = "NavBar-link" onClick = {this.showNotifications}>Notifications</span>
-                {this.state.displayNotifications? <Notifications notifications = {this.props.notifications}/> : null}
-                {/* <Link to = "/notifications" className = "NavBar-link"> Notifications </Link> */}
+                <span className = "NavBar-link" onClick = {this.showNotifications}>Notifications
+                 
+                 {this.state.displayNotifications? 
+                 <div className = "Notifications-container" 
+                 //  onClick={event => event.stopPropagation()}
+                 > 
+                 <NotificationsBlock notifications = {this.props.notifications}/> </div>: null}
+                </span>
                 <Link to = {`/profilepage1/${this.props.userId}`} className = "NavBar-link"> Your Profile </Link>
-                <Link to="/" className = "NavBar-link">Logout</Link>
+                {/* <Link to="/" className = "NavBar-link">Logout</Link> */}
             </div>
             </nav>
+            // </div>
         )}
         else{
             return (
@@ -44,10 +62,10 @@ class NavBar extends Component{
                  <div className = "Logo-ask u-inlineBlock">ask</div><div className = "Logo-MIT u-inlineBlock"> MIT</div>
             </div>
             <div className = "RightLink-container u-inlineBlock">
-                {/* <Link to = "/notifications" className = "NavBar-link"> Notifications </Link> */}
                 <Link to="/" className = "NavBar-link">Login</Link>
             </div>
             </nav>
+        
 
             )
         }

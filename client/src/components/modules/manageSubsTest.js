@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import "./manageSubsTest.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
+import plusIcon from "./images/add4.png";
+import trashIcon from "./images/trash3.png";
+import downArrow from "./images/arrow.png";
+import upArrow from "./images/upArrow.png";
 
 const ALL_DORMS = ["Simmons Hall", "Baker House", "New House", "MacGregor House", 
 "Random Hall", "East Campus", "McCormick Hall", "Next House", "Burton Conner"];
@@ -26,11 +30,11 @@ class ManageSubsTest extends Component{
       }
 
     showClassYears=()=>{
-        if (this.state.classYearClass ==="DropDownContentHide"){this.setState({classYearClass:"DropDownContentShow"})}
+        if (this.state.classYearClass ==="DropDownContentHide"){this.setState({classYearClass:"DropDownContentShow  DropDown-container"})}
         else{this.setState({classYearClass:"DropDownContentHide"})};
     }
     showDorms=()=>{
-        if (this.state.dormsClass ==="DropDownContentHide"){this.setState({dormsClass:"DropDownContentShow"})}
+        if (this.state.dormsClass ==="DropDownContentHide"){this.setState({dormsClass:"DropDownContentShow DropDown-container"})}
         else{this.setState({dormsClass:"DropDownContentHide"})};
     }
 
@@ -59,12 +63,18 @@ class ManageSubsTest extends Component{
     }
     createDropDownClassYear=(arr1, name)=>{
         let dropDownTags = (arr1
-            .map((tag)=> <div onClick = {()=>this.addSubscriptionDropDown(tag)} className = "DropDownTags Tag-container">
-                {tag}<div className = "MinusIcon"><FontAwesomeIcon icon = {faTimes}/></div></div>)
+            .map((tag)=> <div  className = "DropDownTags Tag-container1">
+            {tag}
+            <div className = "plusIcon" onClick = {()=>this.addSubscriptionDropDown(tag)}><img src = {plusIcon}/ ></div>
+            </div>)
         )
         return(
-            <div className = "DropDown-container">
-                <div className = "DropDown-button Tag-container" onClick = {this.showClassYears}>{name}</div>
+            <div>
+                <div className = "DropDown-button Tag-container1" >{name}
+                <div className = "DropDownIcon"
+                onClick = {this.showClassYears}> <img 
+                src = {this.state.classYearClass==="DropDownContentHide"? downArrow:upArrow}/></div>
+                </div>
                 <div className = {this.state.classYearClass}>{dropDownTags}</div>
             </div>
 
@@ -74,12 +84,18 @@ class ManageSubsTest extends Component{
     }
     createDropDownDorms=(arr1, name)=>{
         let dropDownTags = (arr1
-            .map((tag)=> <div onClick = {()=>this.addSubscriptionDropDown(tag)} className = "DropDownTags Tag-container">
-                {tag} <div className = "MinusIcon"><FontAwesomeIcon icon = {faTimes}/></div></div>)
+            .map((tag)=> <div  className = "DropDownTags Tag-container1">
+                {tag} <div className = "plusIcon" onClick = {()=>this.addSubscriptionDropDown(tag)}><img src ={plusIcon}/></div></div>)
         )
         return(
-            <div className = "DropDown-container">
-                <div className = "DropDown-button Tag-container" onClick = {this.showDorms}>{name}</div>
+            <div>
+                <div className = "DropDown-button Tag-container1" >{name}
+                <div 
+                className = "DropDownIcon"
+                onClick = {this.showDorms}>
+                    <img 
+                src = {this.state.dormsClass==="DropDownContentHide"? downArrow:upArrow}/></div>
+                </div>
                 <div className = {this.state.dormsClass}>{dropDownTags}</div>
             </div>
 
@@ -105,26 +121,32 @@ class ManageSubsTest extends Component{
     render(){
 
         let subscribedBlock = (this.props.subscribedTags
-            .map((tag)=> <div onClick = {()=>this.removeSubscription(tag)} className = "Tag-container">{tag}</div>))
+            .map((tag)=> <div  className = "Tag-container1">
+                {tag}
+            <div className = "TrashIcon" onClick = {()=>this.removeSubscription(tag)}><img src = {trashIcon}/></div></div>))
         let unsubBlock = (this.state.ungrouped
-            .map((tag)=><div onClick= {()=>this.addSubscriptionDropDown(tag)} className = "Tag-container">
-                {tag}<div className = "MinusIcon"><FontAwesomeIcon icon = {faTimes}/></div></div>))
+            .map((tag)=><div  className = "Tag-container1">
+                {tag}<div className = "plusIcon" onClick= {()=>this.addSubscriptionDropDown(tag)}><img src = {plusIcon}/></div></div>))
         let dorms = this.createDropDownDorms(this.state.dorms,"Residence Halls")
         let classYear = this.createDropDownClassYear(this.state.classYear, "Class Year")
 
         return(
             <div className = "Full-container">
-                <div className = "ManageSubsText u-title-arvo">Manage your subscriptions</div> 
+                {/* <div className = "ManageSubsText u-title-arvo">Manage your subscriptions</div>  */}
             <div className = "ManageSubs-container">
-                <div className = "SubscribedBlock">
+                <div className = "SubBlockAndText">
                     <div className = "IntroText u-title-arvo">Current Subscriptions</div>
-                    {subscribedBlock}
-                  </div>
-                <div className = "UnsubBlock">
-                <div className = "IntroText u-title-arvo">Suggested Subscriptions</div>
-                    {dorms}
-                    {classYear}
-                    {unsubBlock}
+                        <div className = "SubscribedBlock">
+                        {subscribedBlock}
+                        </div>
+                </div>
+                  <div className = "UnsubBlockAndText">
+                    <div className = "IntroText u-title-arvo">Suggested Subscriptions</div>
+                        <div className = "UnsubBlock">
+                            {dorms}
+                            {classYear}
+                            {unsubBlock}
+                        </div>
                 </div>
                 </div>
           </div>

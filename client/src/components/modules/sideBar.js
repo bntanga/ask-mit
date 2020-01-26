@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import "./sideBar.css"
+import "./sideBar.css";
+import { GoogleLogout } from "react-google-login";
 
 /**
  * @param {string} userName of profile owner
  */
+const GOOGLE_CLIENT_ID = "628992577653-37tpc827fnafhcgbqur2rggvcnpa8jkn.apps.googleusercontent.com";
 
 class SideBar extends Component{
     constructor(props) {
@@ -25,7 +27,15 @@ class SideBar extends Component{
                     <Link to =  {`/profilepage1/${this.props.userId}`}
                     className = "u-title-arvo TextColor"> Questions asked </Link></div>
                 <div className = "SideBarLink"><Link to = "/profilepage3" className = "u-title-arvo TextColor">Manage Subscriptions </Link></div>
-                <div className = "SideBarLink Logout"><Link to = "/profilepage3" className= "u-title-arvo TextColor">Logout </Link></div>
+                {/* <div className = "SideBarLink Logout"><Link to = "/profilepage3" className= "u-title-arvo TextColor">Logout </Link></div> */}
+                <div className = "SideBarLink Logout">
+                    <GoogleLogout 
+                    clientId={GOOGLE_CLIENT_ID}
+                    buttonText="Logout"
+                    onLogoutSuccess={this.props.handleLogout}
+                    onFailure={(err) => console.log(err)}
+                    />
+                </div>
             </div>
         </div>
        );}

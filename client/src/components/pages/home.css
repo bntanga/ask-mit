@@ -5,7 +5,7 @@
 .Feed{
     flex-direction: column;
     justify-content: center;
-    margin-left: 400px;
+    margin-left: 500px;
 }
 /* .SubBar{
     position: fixed;
@@ -16,8 +16,8 @@
 
 .homeContainer{
 
-
-    margin-top: 100px;
+ 
+    margin-top: 65px;
     /* display:flex;
     flex-direction: column; */
     /* align-content: center;
@@ -27,6 +27,7 @@
 
 .InputClick{
     background-color: #FFFFFF;
+    /* filter: brightness(97%); */
     width: 560px;
     /* padding-left: 200px; */
     padding-top: 20px;
@@ -34,6 +35,7 @@
     /* margin-left: 150px; */
     top: 100px;
     border: 2px solid #556474;
+    border-radius: 3px;
 }
 
 .InputClickAlternate{

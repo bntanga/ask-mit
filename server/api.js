@@ -188,6 +188,15 @@ router.put("/questionlikes",(req,res)=>{
     res.send(questionFound)
   })
 })
+router.post("/makenotificationsread",(req,res)=>{
+    User.findById(req.user._id).then((user)=>{
+    user.notifications = req.body.updatedNotifications
+    user.save().then(()=>res.send({}))
+    req.user.notifcations = user.notifications
+  
+  })
+
+})
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {

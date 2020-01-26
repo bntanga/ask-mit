@@ -43,7 +43,9 @@ class ProfilePage1 extends Component{
                 <div><SideBar 
                 userName = {this.props.userName}
                 userId = {this.props.userId}
-                userRouterId = {this.props.userRouterId}/>
+                userRouterId = {this.props.userRouterId}
+                handleLogout = {this.props.handleLogout}
+                />
                 </div>
                 <div><QuestionsAsked 
                 userRouterId = {this.props.userRouterId} 

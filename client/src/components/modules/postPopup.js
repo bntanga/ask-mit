@@ -44,7 +44,7 @@ export default class PostPopup extends Component{
 
     clickOffPopup = event => {
         this.props.handleSubmit();
-        event.preventDefault();
+        event.preventDefault(); 
         event.stopPropagation();
     }
 

@@ -4,10 +4,23 @@
 
   
 }
-.Tag-container{
+.Tag-container1{
     padding: 5px;
     display: inline-flex;
     justify-content: space-between;
+    min-width: 140px;
+    color: black;
+    height: 50px;
+    margin: 10px;
+    padding-left: 20px;
+    /* padding-right: 30px; */
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #ffffff;
+    border: 2px solid #efefef;
 }
 .TagBlock{
     padding: 5px;
@@ -53,20 +66,21 @@
   }
 
 .IntroText{
+  padding-left: 12px;
   font-size: 14px;
-  margin-left:7px;
-  margin-bottom: 3px;
-  padding: 5px;
+  /* margin-left:7px; */
+  /* margin-bottom: 3px; */
+  /* padding: 5px; */
 }
 .SubscribedBlock{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   /* margin-right: 400px; */
-  margin-top: 25px;
+  /* margin-top: 25px; */
   /* position: relative; */
   max-height: 600px;
-  margin-left: 270px;
+  /* margin-left: 270px; */
 
 
 }
@@ -75,7 +89,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin-top: 25px;
+  /* margin-top: 25px; */
   max-height: 600px;
   margin-right: 350px;
   /* left: 300px; */
@@ -83,12 +97,54 @@
 }
 .ManageSubsText{
   position: relative;
-  left: 27%;
+  left: 40%;
+  top: -20px;
 }
-.MinusIcon{
+.plusIcon{
   display: inline-block;
   color: black;
   /* position: absolute; */
   font-size: 20px;
   font-weight: 1px;
+  filter: brightness(200%);
+  /* width: 50px;
+  height: 50px; */
+  margin-right: 13px;
+
+}
+.plusIcon:hover{
+  cursor: pointer;
+}
+.TrashIcon{
+  margin-right: 5px;
+   /* width: 2px;
+  height: 2px; */
+
+}
+.TrashIcon:hover{
+  cursor: pointer;
+}
+.DropDownIcon{
+  margin-right: 10px;
+}
+.DropDownIcon:hover{
+  cursor:pointer;
+}
+.SubBlockAndText{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 270px;
+}
+.UnsubBlockAndText{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.DropDown-container{
+  background-color: #c4c4c4;
+  border-radius: 8px;
+  transition: 10s;
 }

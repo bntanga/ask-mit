@@ -1,13 +1,18 @@
 .App-container{
-    max-width: 1200px;
-    min-height: 700px;
+    min-width: 500px;
+    /* max-width: 1200px; */
+    min-height: 1000px;
     padding: var(--m) var(--m);
     margin: auto;
+    background-color: white;
+    /* filter: brightness(95%); */
   
-
-    /* background-color: #E5E5E5; */
-    
 }
+/* .Background-container{
+    background-color: #F5F5F5;
+    padding-left: 100px;
+    
+} */
 /* .Background-container{
     background-color: #E5E5E5;
 } */

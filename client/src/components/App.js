@@ -57,6 +57,16 @@ class App extends Component {
     };
 
   }
+
+  makeNotificationsRead=()=>{
+    //fix this
+    // let newNotifications = this.state.notifications.map((notification)=>notification.isRead=true);
+
+    // console.log("new notifications ", newNotifications)
+    let newNotifications = []
+    // this.setState({notifications: newNotifications});
+    // post("api/makenotificationsread", {updatedNotifications: newNotifications})
+  }
   // put in componentDidMount
   getUnsubTags(arr1, arr2){
     let difference = arr1.filter(x => !arr2.includes(x));
@@ -139,21 +149,18 @@ class App extends Component {
   handleLogout = () => {
     this.setState({ userId: undefined });
     post("/api/logout");
+    navigate("/");
   };
 
   render() {
     return (
-      <>
-      {/* {console.log("userID ", this.state.userId)} */}
-      {/* {console.log("Subscribed tags ", this.state.subscribedTags)}
-      {console.log("unSubscribed tags ", this.state.unsubscribedTags)}
-      {console.log("userobj ", this.state.user)} */}
       
 
- 
+        <div className = "Background-container">
         <NavBar 
         userId = {this.state.userId}
         notifications = {this.state.notifications}
+        makeNotificationsRead = {this.makeNotificationsRead}
         />
         <div className =  "App-container">
         <Router>
@@ -167,6 +174,7 @@ class App extends Component {
           path = "/profilepage1/:userRouterId"
           userName = {this.state.user.name}
           userId = {this.state.userId}
+          handleLogout = {this.handleLogout}
           />
 
           < ProfilePage3 
@@ -177,6 +185,7 @@ class App extends Component {
           addSubscription= {this.addSubscription}
           removeSubscription = {this.removeSubscription}
           userId = {this.setState.userId}
+          handleLogout = {this.handleLogout}
           />
 
           <Home 
@@ -187,8 +196,8 @@ class App extends Component {
           <NotFound default />
         </Router>
         </div>
+        </div>
        
-      </>
     );
   }
 }

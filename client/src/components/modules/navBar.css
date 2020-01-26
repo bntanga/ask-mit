@@ -2,13 +2,14 @@
 @import url("https://fonts.googleapis.com/css?family=Acme|Calligraffitti&display=swap");
 .NavBar-container{
     display: flex;
-    background-color: #3A4B5E; 
+    background-color: #727965; 
     align-items: center;
     padding: 0px;
     position: fixed;
     width:100%;
     z-index: 1000;
     opacity: 1;
+    /* filter: brightness(97%); */
 }
 .RightLink-container{
     margin-left: 400px;
@@ -19,6 +20,9 @@
     text-decoration: none;
     margin-left: 80px;
     margin-right: 20px;
+}
+.NavBar-link:hover{
+    cursor: pointer;
 }
 .NavBar-logo{
     text-decoration: none;
@@ -44,4 +48,25 @@
     font-family: 'Acme', sans-serif;
     color: #EFEFEF;
     font-size: 40px;
+}
+.NotificationsLayer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 10000;
+}
+.Notifications-container{
+    position: fixed;
+    width: 380px;
+    /* height: 400px; */
+    z-index: 10;
+    background-color: #c4c4c4;
+    display: flex;
+    justify-content: center;
+    border-radius: 3px;
+    padding-bottom: 4px;
+    padding-top: 0px;
 }
