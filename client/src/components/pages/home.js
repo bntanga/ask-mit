@@ -133,8 +133,8 @@ getCurrentDate(){
                        postTags: postTags1
         }
       post("api/questions",storyObj24)
-      .then((question)=>
-      this.setState({questions:[question].concat(this.state.questions)})
+      .then((question)=> {
+            this.setState({questions:[question].concat(this.state.questions)})}
         );
       }
 

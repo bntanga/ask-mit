@@ -5,6 +5,7 @@
     padding: var(--m) var(--m);
     margin: auto;
     background-color: white;
+    background-image: url("./pages/images/beige-tiles.png");
     /* filter: brightness(95%); */
   
 }

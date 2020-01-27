@@ -26,7 +26,7 @@ function getOrCreateUser(user) {
     const newUser = new User({
       name: user.name,
       googleid: user.sub,
-      subscribedTags: ["General"],
+      subscribedTags: [],
       bio: "Random test bio",
       notifications: [],
 

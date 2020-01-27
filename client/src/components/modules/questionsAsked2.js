@@ -9,14 +9,14 @@ class QuestionsAsked extends Component{
       }
     
     render(){
-        let feed = this.props.userStories.map((story)=><FullPost storyObj = {story}/>)
-        return (
+        let feed = this.props.userStories.map((story, i)=><FullPost storyObj = {story} key={`Story-${i}`} userName={this.props.userName} updateLikes={() => alert("Click")}/>)
+        return ( 
             <div className = "QuestionsAsked-container">
                 {feed}
             </div>
         )
     }
-
+ 
     }
 
 export default QuestionsAsked;

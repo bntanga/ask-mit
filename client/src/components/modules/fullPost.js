@@ -29,7 +29,7 @@ let testCommentObj = {
     parentId: 4,
     likes: 5,
   }
-  let testCommentObj3 = {
+  let testCommentObj3 = { 
     creatorName: "Brayo ",
     time: Date.now(),
     content: "test comment 2",
@@ -49,108 +49,116 @@ let testCommentObj = {
             questionLikes: this.props.storyObj.likes
         };
       }
-      isLiked=()=>{
-        if (this.state.liked){
-            this.setState({liked: false,
-            })
-            this.state.questionLikes --
-        } else {
-            this.setState({liked:true,
-                })
-            this.state.questionLikes ++
-            }
-          console.log("question likes ",this.state.questionLikes)
-        }
-      onClick = () => { 
-        this.isLiked();
-        this.props.updateLikes(this.state.liked, this.props.storyObj._id)
+    isLiked=()=>{
+      if (this.state.liked){
+          this.setState({liked: false,
+          })
+          this.state.questionLikes --
+      } else {
+          this.setState({liked:true,
+              })
+          this.state.questionLikes ++
           }
-   displayComments=()=>{
-        if (this.state.showComments){
-          this.setState({showComments: false})
+        console.log("question likes ",this.state.questionLikes)
+      }
+    onClick = () => { 
+      this.isLiked();
+      this.props.updateLikes(this.state.liked, this.props.storyObj._id)
         }
-        else{
-          this.setState({showComments: true})
-        }
-   }
-   getCurrentDate(){
-    let today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    let yyyy = today.getFullYear();
-    let mmm;
-    switch(mm) {
-    case "01":
-    mmm = "Jan";
-    break;
-    case "02":
-    mmm = "Feb";
-    break;
-    case "03":
-    mmm = "Mar";
-    break;
-    case "04":
-    mmm = "Apr"
-    break;
-    case "05":
-    mmm = "May"
-    break;
-    case "06":
-    mmm = Jun;
-    break;
-    case "07":
-    mmm = Jul;
-    break;
-    case "08":
-    mmm = "Aug";
-    break;
-    case "09":
-    mmm = "Sep"
-    break;
-    case "10":
-    mmm = "Oct";
-    break;
-    case "11":
-    mmm = "Nov";
-    break;
-    case "12":
-    mmm = "Dec"
-    break;
+    displayComments=()=>{
+          if (this.state.showComments){
+            this.setState({showComments: false})
+          }
+          else{
+            this.setState({showComments: true})
+          }
     }
+    getCurrentDate(){
+      let today = new Date();
+      let dd = String(today.getDate()).padStart(2, '0');
+      let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      let yyyy = today.getFullYear();
+      let mmm;
+      switch(mm) {
+      case "01":
+      mmm = "Jan";
+      break;
+      case "02":
+      mmm = "Feb";
+      break;
+      case "03":
+      mmm = "Mar";
+      break;
+      case "04":
+      mmm = "Apr"
+      break;
+      case "05":
+      mmm = "May"
+      break;
+      case "06":
+      mmm = Jun;
+      break;
+      case "07":
+      mmm = Jul;
+      break;
+      case "08":
+      mmm = "Aug";
+      break;
+      case "09":
+      mmm = "Sep"
+      break;
+      case "10":
+      mmm = "Oct";
+      break;
+      case "11":
+      mmm = "Nov";
+      break;
+      case "12":
+      mmm = "Dec"
+      break;
+      }
 
-    today = mmm + ' ' + dd + ', ' + yyyy;
-    return (today)
-  }
-   addComment = (commentContent) =>{
-     let commentObj24 = {
-       creatorName: this.props.userName,
-       creatorId: this.props.creatorId,
-       time: this.getCurrentDate(),
-       content: commentContent,
-       parentId: this.props.storyObj._id,
-       likes: 0,
-     }
+      today = mmm + ' ' + dd + ', ' + yyyy;
+      return (today)
+    }
+    addComment = (commentContent) =>{
+      let commentObj24 = {
+        creatorName: this.props.userName,
+        creatorId: this.props.creatorId,
+        time: this.getCurrentDate(),
+        content: commentContent,
+        parentId: this.props.storyObj._id,
+        likes: 0,
+      }
 
-    post("api/comments", commentObj24).then((comment)=>
-     this.setState(
-       {commentObjList: this.state.commentObjList.concat(comment)})
-     )
-   }
-   updateLikes= (isLiked, Id) =>{
-     put("/api/commentlikes",{_id:Id, add:!isLiked}).then((comment)=>
-     get("/api/comments",{parentId: comment.parentId}).then((comments)=>
-     this.setState({commentObjList: comments})));
-  //       if (isLiked){
-  //         //must return new comment obj
-  //         put("api/commentlikes", {_id: Id, add: false})
-  //  }else{
-  //   put("api/commentlikes", {_id: Id, add: true})
-  //  }
-  }
+      post("api/comments", commentObj24).then((comment)=>
+      this.setState(
+        {commentObjList: this.state.commentObjList.concat(comment)})
+      )
+    }
+    updateLikes= (isLiked, Id) =>{
+      put("/api/commentlikes",{_id:Id, add:!isLiked}).then((comment)=>
+      get("/api/comments",{parentId: comment.parentId}).then((comments)=>
+      this.setState({commentObjList: comments})));
+    //       if (isLiked){
+    //         //must return new comment obj
+    //         put("api/commentlikes", {_id: Id, add: false})
+    //  }else{
+    //   put("api/commentlikes", {_id: Id, add: true})
+    //  }
+    }
+    // componentDidUpdate() {
+    //   get("/api/comments",{parentId: this.props.storyObj._id})
+    //   .then((comments)=>{
+    //     if (this.state.commentObjList !== comments) {
+    //       this.setState({commentObjList: comments}) };
+    //     })
+        
+    // }
     componentDidMount(){
       get("/api/comments",{parentId: this.props.storyObj._id})
-      .then((comments)=>
-      this.setState({commentObjList: comments}));
+      .then((comments)=>{ console.log("commennttt " , comments)
+      this.setState({commentObjList: comments}) });
     }
     render(){
       if(this.state.showComments){

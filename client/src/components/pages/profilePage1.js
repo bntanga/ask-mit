@@ -19,7 +19,7 @@ class ProfilePage1 extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            ListOfStoryObj : [ testStoryObj1],
+            ListOfStoryObj : [],
         }
       }
       componentDidMount(){
@@ -49,7 +49,7 @@ class ProfilePage1 extends Component{
                 </div>
                 <div><QuestionsAsked 
                 userRouterId = {this.props.userRouterId} 
-                userStories = {this.state.ListOfStoryObj}/>
+                userStories = {this.state.ListOfStoryObj}/> 
                 </div>
             </div>
         )

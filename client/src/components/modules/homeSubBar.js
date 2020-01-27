@@ -67,8 +67,9 @@ let test = ["Academics", "Social", "Athletics", "Business", "Dorm life", "Mental
       }
     render(){
         let tags = this.props.subscribedTags
-                .map((tag)=> <div 
+                .map((tag, i)=> <div 
                 className = "Tag-container" 
+                key={`Tag-${tag}`}
                 onClick = {()=>this.props.handleFilter(tag)}>
                     <img src = {imageMap[tag]} className="ImageTag"/>
                     {tag} <div></div>

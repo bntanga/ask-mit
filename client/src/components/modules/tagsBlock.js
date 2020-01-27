@@ -10,7 +10,7 @@ class TagsBlock extends Component{
         super(props);
       };
     render(){
-        let tagBar = this.props.postTags.map((tag)=> <div className = "u-inlineBlock u-title-arvo TagBar">  {tag} </div>)
+        let tagBar = this.props.postTags.map((tag)=> <div className = "u-inlineBlock u-title-arvo TagBar" key={`Tag-${tag}`}>  {tag} </div>)
         return(
            <div>{tagBar}</div>
         )

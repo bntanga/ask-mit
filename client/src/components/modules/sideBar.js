@@ -20,7 +20,7 @@ class SideBar extends Component{
         <div className = "Sidebar-container u-title-arvo"> 
             <div className = "NameBio-container">
                 <div className = "SideBarName ">John Doe</div>
-                <div className = "UserBio">Lover of all things chess</div>
+                <div className = "UserBio1">Lover of all things chess</div>
             </div>
             <div className = "u-title-arvo">
                 <div className = "SideBarLink QuestionsAsked">

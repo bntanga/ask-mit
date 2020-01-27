@@ -6,6 +6,7 @@ import NavBar from "./modules/navBar";
 import Home from "./pages/home";
 import ProfilePage1 from "./pages/profilePage1";
 import ProfilePage3 from "./pages/profilePage3";
+import InitialLogin from "./pages/initialLogin";
 
 
 import "../utilities.css";
@@ -54,6 +55,7 @@ class App extends Component {
       subscribedTags: [],
       userBio: "",
       notifications: [],
+      other: ""
     };
 
   }
@@ -62,8 +64,8 @@ class App extends Component {
     //fix this
     // let newNotifications = this.state.notifications.map((notification)=>notification.isRead=true);
 
-    // console.log("new notifications ", newNotifications)
-    let newNotifications = []
+    let newNotifications = this.state.notifications.filter((notification) => notification.isRead)
+    console.log("new notifications ", newNotifications)
     // this.setState({notifications: newNotifications});
     // post("api/makenotificationsread", {updatedNotifications: newNotifications})
   }
@@ -72,7 +74,10 @@ class App extends Component {
     let difference = arr1.filter(x => !arr2.includes(x));
     return difference;
   }
-
+  makeRerender=()=>{
+    this.setState({other:[]})
+    window.location.reload();
+  }
 
  
   addSubscription = (tag) => {
@@ -120,6 +125,10 @@ class App extends Component {
           userBio: user.bio,
           notifications: user.notifications,
         });
+
+        if(user.subscribedTags.length === 0) {
+          navigate("/initiallogin")
+        }
       }
     });
     socket.on("notification", (notification) => {
@@ -140,7 +149,12 @@ class App extends Component {
         userBio: user.bio,
         notifications: user.notifications,
       }, () => {
+        if(user.subscribedTags.length === 0) {
+          navigate("/initiallogin")
+        }
+        else{
         navigate("/home")
+        }
       });
       // post("/api/initsocket", { socketid: socket.id });
     });
@@ -161,6 +175,7 @@ class App extends Component {
         userId = {this.state.userId}
         notifications = {this.state.notifications}
         makeNotificationsRead = {this.makeNotificationsRead}
+        makeRerender = {this.makeRerender}
         />
         <div className =  "App-container">
         <Router>
@@ -186,6 +201,15 @@ class App extends Component {
           removeSubscription = {this.removeSubscription}
           userId = {this.setState.userId}
           handleLogout = {this.handleLogout}
+          />
+          <InitialLogin
+          path = "/initiallogin"
+          userName = {this.state.user.name}
+          subscribedTags = {this.state.subscribedTags}
+          unsubscribedTags = {this.state.unsubscribedTags}
+          addSubscription= {this.addSubscription}
+          removeSubscription = {this.removeSubscription}
+          userId = {this.setState.userId}
           />
 
           <Home 

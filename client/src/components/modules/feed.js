@@ -14,8 +14,9 @@ import "./feed.css";
         }
     render(){
         let feed1 = this.props.stories
-        .map((storyObj)=> <FullPost 
-        storyObj = {storyObj}
+        .map((storyObj, i)=> <FullPost 
+        storyObj = {storyObj} 
+        key={`FullPost-${storyObj._id}`}
         userName = {this.props.userName}
         updateLikes = {this.props.updateLikes}
         />)

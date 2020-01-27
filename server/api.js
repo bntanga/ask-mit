@@ -84,7 +84,9 @@ router.post("/comments", (req,res)=> {
   .then((comment)=>{
   res.send(comment)
   Question.findById(comment.parentId)
-  .then((questionFound)=> User.findById(questionFound.creatorId).then((userFound)=>{ 
+  .then((questionFound)=> {
+  if (req.user._id !== questionFound.creatorId){
+  User.findById(questionFound.creatorId).then((userFound)=>{ 
     let newNotification;
     newNotification = {
       senderName: comment.creatorName,
@@ -102,7 +104,7 @@ router.post("/comments", (req,res)=> {
       
       }
   
-  ))
+  )}})
   
   })
 
