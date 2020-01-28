@@ -133,13 +133,13 @@ let testCommentObj = {
 
       post("api/comments", commentObj24).then((comment)=>
       this.setState(
-        {commentObjList: this.state.commentObjList.concat(comment)})
+        {commentObjList: [comment].concat(this.state.commentObjList)})
       )
     }
     updateLikes= (isLiked, Id) =>{
       put("/api/commentlikes",{_id:Id, add:!isLiked}).then((comment)=>
       get("/api/comments",{parentId: comment.parentId}).then((comments)=>
-      this.setState({commentObjList: comments})));
+      this.setState({commentObjList: comments.reverse()})));
     //       if (isLiked){
     //         //must return new comment obj
     //         put("api/commentlikes", {_id: Id, add: false})
@@ -157,8 +157,9 @@ let testCommentObj = {
     // }
     componentDidMount(){
       get("/api/comments",{parentId: this.props.storyObj._id})
-      .then((comments)=>{ console.log("commennttt " , comments)
-      this.setState({commentObjList: comments}) });
+      .then((comments)=>{ 
+      let commentObjs = comments.reverse();
+      this.setState({commentObjList: commentObjs}) });
     }
     render(){
       if(this.state.showComments){

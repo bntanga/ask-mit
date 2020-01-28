@@ -199,6 +199,13 @@ router.post("/makenotificationsread",(req,res)=>{
   })
 
 })
+router.get("/usernameandbio", (req,res)=>{
+  User.findOne({_id: req.query.userId}).then((user)=>{
+    let newObj = {userName:user.bio, userBio:user.name}
+    res.send(newObj)
+  }
+  )
+})
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {

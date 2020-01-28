@@ -11,7 +11,7 @@
 .SubmitButton{
     display: inline-block;
     font-size: 12px;
-    background-color: white;
+    /* background-color: white; */
     border-radius: 8px;
     position: absolute;
     right: 2px;
@@ -23,9 +23,8 @@
     font-size: 10px;
 }
 .SubmitButton:hover{
-    background-color: #556474;
-    color: white;
     cursor: pointer;
+    font-size: 11px;
 
 
 }

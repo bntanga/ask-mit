@@ -26,10 +26,18 @@ class Skeleton extends Component {
 
   render() {
     return (
-      <>
-
-        <div className = "GoogleButton">
-          This is the landing page. Login and click and go to manage subscriptions. Pick subscriptions and view them in home.
+      <div className = "Background">
+        
+        <div className = "Logo1 FlexItem1">
+          <div className = "Logo-ask1 u-inlineBlock">ask</div>
+          <div className = "Logo-MIT1 u-inlineBlock"> MIT</div>
+        </div>
+        <div className = "WordsFlex">
+        <div className = "HomeText u-title-arvo FlexItem2">
+          Get answers to your questions
+          <div>from other MIT students </div>
+        </div>
+        <div className = "GoogleButton FlexItem3">
         {this.props.userId ? 
           // navigate("/home")
           <GoogleLogout 
@@ -41,13 +49,15 @@ class Skeleton extends Component {
          : (
           <GoogleLogin
             clientId={GOOGLE_CLIENT_ID}
-            buttonText="Login"
+            buttonText="Login with google"
             onSuccess={this.props.handleLogin}
             onFailure={(err) => console.log(err)}
           />
         )}
         </div>
-      </>
+        </div>
+        </div>
+
     );
   }
 }

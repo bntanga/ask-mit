@@ -12,7 +12,7 @@ const ALL_DORMS = ["Simmons Hall", "Baker House", "New House", "MacGregor House"
 
 const ALL_CLASS_YEARS = ["Class of 20", "Class of 21", "Class of 22", "Class of 23"];
 
-const ALL_UNGROUPED = ["General", "Academic", "Social", "Business", "Mental Health", "Food", "Clubs","Sports", "Other"];
+const ALL_UNGROUPED = ["General", "Academic", "Social", "Business", "Mental Health", "Food", "Clubs", "Other"];
 
 class ManageSubsTest extends Component{
     constructor(props) {
@@ -134,18 +134,18 @@ class ManageSubsTest extends Component{
             <div className = "Full-container">
                 {/* <div className = "ManageSubsText u-title-arvo">Manage your subscriptions</div>  */}
             <div className = "ManageSubs-container">
+                <div className = "UnsubBlockAndText">
+                    <div className = "IntroText u-title-arvo">Suggested Subscriptions</div>
+                        <div className = "UnsubBlock">
+                            {dorms} 
+                            {classYear}
+                            {unsubBlock}
+                        </div>
+                </div>
                 <div className = "SubBlockAndText">
                     <div className = "IntroText u-title-arvo">Current Subscriptions</div>
                         <div className = "SubscribedBlock">
                         {subscribedBlock}
-                        </div>
-                </div>
-                  <div className = "UnsubBlockAndText">
-                    <div className = "IntroText u-title-arvo">Suggested Subscriptions</div>
-                        <div className = "UnsubBlock">
-                            {dorms}
-                            {classYear}
-                            {unsubBlock}
                         </div>
                 </div>
                 </div>

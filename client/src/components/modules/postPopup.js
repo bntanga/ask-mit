@@ -11,6 +11,7 @@ export default class PostPopup extends Component{
 
     super(props);
     this.state = {
+        anonymous: false,
 
         tags : [],
         value: "",
@@ -53,6 +54,12 @@ export default class PostPopup extends Component{
 
     }
     } 
+    handleAnonymous=()=>{ 
+        if (this.state.anonymous){
+            this.setState({anonymous:false})
+        }
+        else {this.setState({anonymous:true})}
+    }
     handleChange = (event) => {
         this.setState({
           value: event.target.value,
@@ -60,7 +67,7 @@ export default class PostPopup extends Component{
       };
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.addPost(this.state.value, this.state.addedTags);
+        this.props.addPost(this.state.value, this.state.addedTags, this.state.anonymous);
         //test case
         this.props.handleSubmit()
         this.state.addedTags = []
@@ -114,10 +121,13 @@ export default class PostPopup extends Component{
                     value= {this.state.value}
                     />
                     <span className="CheckBoxContainer u-title-arvo">
-                            <input type="checkbox"/>
+                            <input type="checkbox"
+                                    onChange = {this.handleAnonymous}
+                                                />
                             Submit Anonymously
                     </span>
-                    <div className = "tagContainerText">Select tags:</div>
+                    <div className = "tagContainerText">
+                        <div className = "RequiredText">(Required)</div>Select tags:</div>
                     <div className="tagsContainer">
                         {Tags}
 

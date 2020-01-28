@@ -16,23 +16,6 @@ import PostPopup from "../modules/postPopup.js";
  * @param {object} userObj for post requests
  */
 
-let testStoryObj1 = {
-    creatorName: "John Doe",
-    creatorId: "aaa",
-    time: Date.now(),
-    content: "How many eyes does a chicken have?",
-    likes: 10,
-    postTags: ["Academics"]
-  }
-  let testStoryObj2 = {
-    creatorName: "John Cena",
-    creatorId: "bro",
-    time: Date.now(),
-    content: "Who let the dogs out of the big green bottle?",
-    likes: 15,
-    postTags: ["Social", "Parties"]
-
-  }
 
 class Home extends Component {
     constructor(props) {
@@ -43,6 +26,7 @@ class Home extends Component {
             questions: [],
             isPopupVisible:false,
             inputClassName:"InputClick u-title-arvo",
+            activeTag: ""
         }
       }
     componentDidMount(){
@@ -65,14 +49,48 @@ class Home extends Component {
       }
     }
       updateLikes= (isLiked, Id) =>{
-        put("api/questionlikes",{_id:Id, add:!isLiked}).then((question)=>
-        get("api/questions",{postTags: this.props.subscribedTags}))
-        .then((questionsList)=>
-        {let renderedList = questionsList.reverse()
+        put("/api/questionlikes",{_id:Id, add:!isLiked}).then((question)=>{
+        if (this.state.activeTag){
+          get("api/questions", {postTags:[this.state.activeTag]}).then((questionsList)=>
+          {let renderedList = questionsList.reverse();
+            this.setState({questions:renderedList})})
+        }
+        else{get("api/questions", {postTags:[this.props.subscribedTags]}).then((questionsList)=>{
+          let renderedList = questionsList.reverse()
           this.setState({questions:renderedList})
-     })}
 
-getCurrentDate(){
+        })
+      
+      
+      }//end of else
+
+      }//first call back
+        
+        
+        
+        
+        )
+
+
+
+
+
+
+      };
+
+
+
+
+  resetFilters = () => {
+    window.scrollTo(0, 0);
+    get("api/questions", {postTags: this.props.subscribedTags})
+      .then((questionsList)=>{
+      let renderedList = questionsList.reverse()
+      this.setState({questions:renderedList, activeTag:""})
+      });
+  };
+
+getCurrentDate = () => {
       let today = new Date();
       let dd = String(today.getDate()).padStart(2, '0');
       let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -121,8 +139,20 @@ getCurrentDate(){
       return (today)
     }
 
-    addPost = (storyContent, postTags1)=>{
-      let storyObj24 = { 
+    addPost = (storyContent, postTags1, anonymous)=>{
+      let storyObj24;
+      if(anonymous){
+        storyObj24 = {
+          creatorName: "Anonymous",
+          creatorId: "Anonymous",
+          time: this.getCurrentDate(),
+          content: storyContent,
+          likes: 0,
+          postTags: postTags1
+        }
+      }
+      else{
+      storyObj24 = { 
                        creatorName: this.props.userObj.name,
                        creatorId: this.props.userObj._id,
                        //change to proper date
@@ -131,7 +161,7 @@ getCurrentDate(){
                        likes:0,
                        //change this to user input
                        postTags: postTags1
-        }
+        }}
       post("api/questions",storyObj24)
       .then((question)=> {
             this.setState({questions:[question].concat(this.state.questions)})}
@@ -154,9 +184,9 @@ getCurrentDate(){
       get("api/questions", {postTags:[filterTag]})
       .then((questionsList)=>{
         let renderedList = questionsList.reverse();
-        this.setState({questions:renderedList});
+        this.setState({questions:renderedList, activeTag:filterTag});
         });
-
+      window.scrollTo(0, 0);
     }
   
     
@@ -179,6 +209,7 @@ getCurrentDate(){
             <div className = "SubBar">
                 <HomeSubBar subscribedTags = {this.props.subscribedTags}
                             handleFilter = {this.handleFilter}
+                            activeTag = {this.state.activeTag}
                 />
                 </div>
               <div className = "Feed">

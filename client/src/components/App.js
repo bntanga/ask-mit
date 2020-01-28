@@ -46,7 +46,7 @@ class App extends Component {
     this.state = {
       userId: undefined,
       allTags: ["General", "Academic", "Social", "Business",
-       "Mental Health", "Food", "Clubs","Sports", "Other",
+       "Mental Health", "Food", "Clubs", "Other",
        "Class of 20", "Class of 21", "Class of 22", "Class of 23",
        "Simmons Hall", "Baker House", "New House", "MacGregor House", 
        "Random Hall", "East Campus", "McCormick Hall", "Next House", "Burton Conner" ],
@@ -55,28 +55,37 @@ class App extends Component {
       subscribedTags: [],
       userBio: "",
       notifications: [],
+      notificationsNumber: 0,
       other: ""
     };
+
+    this.homePageRef = React.createRef();
 
   }
 
   makeNotificationsRead=()=>{
     //fix this
-    // let newNotifications = this.state.notifications.map((notification)=>notification.isRead=true);
+    let newNotifications = this.state.notifications.map((notification)=> {return {...notification, isRead: true}});
+    console.log(newNotifications)
+    this.setState({notifications: [], notificationsNumber:0});
 
-    let newNotifications = this.state.notifications.filter((notification) => notification.isRead)
+    // let newNotifications = this.state.notifications.filter((notification) => notification.isRead)
     console.log("new notifications ", newNotifications)
-    // this.setState({notifications: newNotifications});
-    // post("api/makenotificationsread", {updatedNotifications: newNotifications})
+    // this.setState({notifications: newNotifications, notificationsNumber:0});
+    post("api/makenotificationsread", {updatedNotifications: []})
+    
   }
   // put in componentDidMount
   getUnsubTags(arr1, arr2){
     let difference = arr1.filter(x => !arr2.includes(x));
     return difference;
   }
-  makeRerender=()=>{
-    this.setState({other:[]})
-    window.location.reload();
+  
+  resetHomePageFilters = () => {
+    console.log("attempting reset");
+    if(this.homePageRef.current) {
+      this.homePageRef.current.resetFilters();
+    }
   }
 
  
@@ -89,7 +98,7 @@ class App extends Component {
     if (index > -1) {
     this.state.unsubscribedTags.splice(index, 1);
     this.state.subscribedTags.push(tag)
-    put("api/usertags",{subscribedTags: this.state.subscribedTags})
+    put("/api/usertags",{subscribedTags: this.state.subscribedTags})
     .then((user)=> this.setState({subscribedTags:user.subscribedTags}))
       }
     }
@@ -100,7 +109,7 @@ class App extends Component {
     if (index > -1) {
     this.state.subscribedTags.splice(index, 1);
     // this.setState({subscribedTags: this.state.subscribedTags})
-    put("api/usertags",{subscribedTags: this.state.subscribedTags})
+    put("/api/usertags",{subscribedTags: this.state.subscribedTags})
     .then((user)=> {
       this.setState({subscribedTags:user.subscribedTags}, callback)})
     
@@ -118,12 +127,15 @@ class App extends Component {
       console.log("current user ", user)
       if (user._id) {
         // they are registed in the database, and currently logged in.
+        let unreadNotifications4 = user.notifications.filter((notification)=> !notification.isRead)
+        let number = unreadNotifications4.length;
         this.setState({ userId: user._id,
           user: user,
           subscribedTags: user.subscribedTags,
           unsubscribedTags: unsub,
           userBio: user.bio,
           notifications: user.notifications,
+          notificationsNumber: number,
         });
 
         if(user.subscribedTags.length === 0) {
@@ -133,7 +145,8 @@ class App extends Component {
     });
     socket.on("notification", (notification) => {
       this.state.notifications.push(notification)
-      this.setState({notifications: this.state.notifications}, console.log("Is state being set ", this.state.notifications))
+      this.state.notificationsNumber++
+      this.setState({notifications: this.state.notifications})
     })
   }
 
@@ -142,12 +155,16 @@ class App extends Component {
     const userToken = res.tokenObj.id_token;
     post("/api/login", { token: userToken }).then((user) => {
       let unsub = this.getUnsubTags(this.state.allTags, user.subscribedTags)
+      let unreadNotifications5 = user.notifications.filter((notification)=> !notification.isRead)
+      let number3 = unreadNotifications5.length;
+
       this.setState({ userId: user._id,
         user: user,
         subscribedTags: user.subscribedTags,
         unsubscribedTags: unsub,
         userBio: user.bio,
         notifications: user.notifications,
+        notificationsNumber: number3,
       }, () => {
         if(user.subscribedTags.length === 0) {
           navigate("/initiallogin")
@@ -175,7 +192,8 @@ class App extends Component {
         userId = {this.state.userId}
         notifications = {this.state.notifications}
         makeNotificationsRead = {this.makeNotificationsRead}
-        makeRerender = {this.makeRerender}
+        makeRerender = {this.resetHomePageFilters}
+        notificationsNumber = {this.state.notificationsNumber}
         />
         <div className =  "App-container">
         <Router>
@@ -193,13 +211,13 @@ class App extends Component {
           />
 
           < ProfilePage3 
-          path = "/profilepage3"
+          path = "/profilepage3/:userRouterId"
           userName = {this.state.user.name}
           subscribedTags = {this.state.subscribedTags}
           unsubscribedTags = {this.state.unsubscribedTags}
           addSubscription= {this.addSubscription}
           removeSubscription = {this.removeSubscription}
-          userId = {this.setState.userId}
+          userId = {this.state.userId}
           handleLogout = {this.handleLogout}
           />
           <InitialLogin
@@ -216,6 +234,7 @@ class App extends Component {
           path = "/home"
           subscribedTags = {this.state.subscribedTags}
           userObj = {this.state.user}
+          ref = {this.homePageRef}
           />
           <NotFound default />
         </Router>

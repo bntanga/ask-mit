@@ -57,20 +57,21 @@ const imageMap = {
   "Class of 20", "Class of 21", "Class of 22", "Class of 23",
   "Simmons Hall", "Baker House", "New House", "MacGregor House", 
   "Random Hall", "East Campus", "McCormick Hall", "Next House", ]
-  
-let test = ["Academics", "Social", "Athletics", "Business", "Dorm life", "Mental health", "Clubs"]
 
 
  class HomeSubBar extends Component{
     constructor(props) {
         super(props);
       }
+
     render(){
-        let tags = this.props.subscribedTags
+        let renderedTags = this.props.subscribedTags
+        let tags = renderedTags
                 .map((tag, i)=> <div 
-                className = "Tag-container" 
                 key={`Tag-${tag}`}
-                onClick = {()=>this.props.handleFilter(tag)}>
+                onClick = {()=>this.props.handleFilter(tag)}
+                className = {this.props.activeTag===tag? "Tag-containerActive":"Tag-container"}
+                >
                     <img src = {imageMap[tag]} className="ImageTag"/>
                     {tag} <div></div>
                     </div>)

@@ -38,7 +38,7 @@ class PostInput extends Component{
               type="submit"
               value="Submit"
               onClick={this.handleSubmit}
-            >
+            > 
               Submit
             </button>
           </div>

@@ -1,11 +1,67 @@
+@import url("https://fonts.googleapis.com/css?family=Calligraffitti&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Acme|Calligraffitti&display=swap");
 .GoogleButton{
-    position: absolute;
-    left: 500px;
-    top: 300px;
-    z-index: 10;
+    /* position: absolute;
+    left: 40.5%;
+    top: 350px;
+    z-index: 10; */
+    width: 500px;
+    height: 200px;
+    position: relative;
+    left: 160px;
 }
-.SimmonsHall{
-    width: 50px;
-    height:50px;
-    border-radius: 4px;
+
+.Background{
+    background-image: url("./images/dome1.jpg");
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
+}
+.HomeText{
+    color: white;
+    /* position: fixed;
+    z-index: 10000;
+    top: 250px;
+    left: 37%; */
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+.Logo-ask1{
+    text-decoration: none;
+    padding-right:0px;
+    margin-right:0px;
+    font-family: 'Calligraffitti', sans-serif;
+    color: white;
+    font-size: 70px;
+    
+}
+.Logo-MIT1{
+    text-decoration: none;
+    padding-left: 0px;
+    margin-left: 0px;
+    font-family: 'Acme', sans-serif;
+    color: white;
+    font-size: 70px;
+    z-index: 10000;
+}
+.WordsFlex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Logo1{
+    /* position: fixed;
+    left: 40%;
+    top: 140px; */
+    font-weight: 900;
 }

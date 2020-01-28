@@ -1,9 +1,9 @@
-.Full-container{
-  margin-top: 100px;
-  margin-left: 200px;
-
+/* .Full-container{
+  position: relative;
+  left: 150px;
+  top: 100px;
   
-}
+} */
 .Tag-container1{
     padding: 5px;
     display: inline-flex;
@@ -68,33 +68,12 @@
 .IntroText{
   padding-left: 12px;
   font-size: 14px;
+  /* position: absolute; */
   /* margin-left:7px; */
   /* margin-bottom: 3px; */
   /* padding: 5px; */
 }
-.SubscribedBlock{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  /* margin-right: 400px; */
-  /* margin-top: 25px; */
-  /* position: relative; */
-  max-height: 600px;
-  /* margin-left: 270px; */
 
-
-}
-.UnsubBlock{
-  /* position: relative; */
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  /* margin-top: 25px; */
-  max-height: 600px;
-  margin-right: 350px;
-  /* left: 300px; */
-  /* margin-left: 300px; */
-}
 .ManageSubsText{
   position: relative;
   left: 40%;
@@ -135,13 +114,36 @@
   justify-content: flex-start;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 270px;
 }
 .UnsubBlockAndText{
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   align-items: flex-start;
+  margin-left: 270px;
+}
+.SubscribedBlock{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* margin-right: 400px; */
+  /* margin-top: 25px; */
+  /* position: relative; */
+  max-height: 600px;
+  margin-right: 550px;
+  /* margin-left: 270px; */
+
+
+}
+.UnsubBlock{
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* margin-top: 25px; */
+  max-height: 600px;
+  /* left: 300px; */
+  /* margin-left: 300px; */
 }
 .DropDown-container{
   background-color: #c4c4c4;

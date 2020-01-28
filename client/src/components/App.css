@@ -4,8 +4,8 @@
     min-height: 1000px;
     padding: var(--m) var(--m);
     margin: auto;
-    background-color: white;
-    background-image: url("./pages/images/beige-tiles.png");
+    background-color: #F7F9FB;
+    /* background-image: url("./pages/images/fishnets-and-hearts.png"); */
     /* filter: brightness(95%); */
   
 }

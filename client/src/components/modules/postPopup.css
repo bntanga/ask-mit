@@ -7,7 +7,7 @@
     position: fixed;
     left: 515px;
 
-    z-index: 99999;
+    z-index: 999999999;
 
     /* flex-direction: column; */
     /* background-color: ffffff; */
@@ -19,7 +19,7 @@
     background: #EFEFEF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius:5px;
-    top: 90px;
+    top: 82px;
     /* margin-left: 165px; */
 
 }
@@ -30,27 +30,9 @@
     /* visibility: hidden; */
     
     display: none;
-    /* top: 0; */
-
-    /* z-index: 99999; */
-
-    flex-direction: column;
-    background-color: #c4c4c4;
-    width:550px;
-    height:450px;
-    justify-content: space-evenly;
-    align-items: center;
-    background: #C4C4C4;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius:10px;
-    margin-left: 165px;
 
 }
 
-
-/* .popUpContainerText{
-font-size: 30px;
-} */
 
 .popUpInputfield{
 
@@ -67,8 +49,6 @@ font-size: 30px;
     margin-left: 2px;
     text-indent: 2px;
     word-wrap: break-word;
-
-
 }
 
 .PostPopup-layer {
@@ -79,8 +59,9 @@ font-size: 30px;
     height: 100vh;
 
     z-index: 10000;
-    /* background-color: #EFEFEF;
-    opacity: 0.1; */
+    /* filter: blur(8px); */
+   /* background-color:#EFEFEF; */
+    
 }
 
 .tagsContainer{
@@ -88,7 +69,7 @@ font-size: 30px;
     flex-direction: row;
     /* width:500px; */
     justify-content: flex-start;
-    /* align-content: flex-start; */
+    /* align-content: flex-start; */ 
     flex-flow: row wrap;
     /* margin-right: 85px; */
     /* margin:0px; */
@@ -131,6 +112,7 @@ font-size: 30px;
     font-size: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 }
+.tagButtonAlternate:hover{cursor: pointer;}
 
 .tagButton:hover{
 
@@ -159,6 +141,11 @@ font-size: 10px;
     margin-top: 18px;
     margin-bottom: 10px;
     margin-left: 16px;
+}
+.RequiredText{
+    display: inline-block;
+    color: red;
+    margin-right: 5px;
 }
 .SubmitCancel-container{
     display: flex;
@@ -199,3 +186,4 @@ font-size: 10px;
     cursor: pointer;
    
    }
+

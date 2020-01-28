@@ -9,13 +9,17 @@ class NavBar extends Component{
         super(props); 
         this.state = {
         displayNotifications: false,
+        notificationsNumber: 0
         }
       }
 
-
-    showNotifications=()=>{
+    showNotifications=event=>{
+        // let unreadNotifications2 = this.props.notifications.filter((notification)=> !notification.isRead)
+        // if (unreadNotifications2.length===0){return null}
         if (!this.state.displayNotifications){
-            this.setState({displayNotifications: true})}     
+            this.setState({displayNotifications: true})}    
+        // event.preventDefault();
+        // event.stopPropagation(); 
     }
     hideNotifications= event =>{
         event.preventDefault();
@@ -27,7 +31,6 @@ class NavBar extends Component{
     }
 
     render() {
-        console.log("Navbar notifications ", this.props.notifications)
         if (this.props.userId){
         return (
             // <div className = "NotificationsLayer" onClick = {this.hideNotifications}>
@@ -42,18 +45,22 @@ class NavBar extends Component{
                 className = "NavBar-link" > Home</Link>
                 
                 </div>
-                <span className = "NavBar-link" onClick = {this.showNotifications}>Notifications
+                <span className = "NavBar-link NotificationsFlex" onClick = {this.showNotifications}>
+                   <div className = "NotificationTextAndNumber"> 
+        {this.props.notificationsNumber>0?<div className = "NotificationsNumber u-title-arvo">{this.props.notificationsNumber}</div>:null}
+                    Notifications
+                    </div>
                  
                  <div 
                  onClick={this.hideNotifications}
                  className ={this.state.displayNotifications?"PostNotificationsLayer":"PostNotificationsLayerHide"} >
-                     {this.state.displayNotifications? 
+                 </div>
+                 {this.state.displayNotifications? 
                  <div className = "Notifications-container" 
                  onClick={event => event.stopPropagation()}
                  //  onClick={event => event.stopPropagation()}
                  > 
                  <NotificationsBlock notifications = {this.props.notifications}/> </div>: null}
-                 </div>
                 </span>
                 <Link to = {`/profilepage1/${this.props.userId}`} className = "NavBar-link"> Your Profile </Link>
             </div>
@@ -63,11 +70,11 @@ class NavBar extends Component{
         else{
             return (
             <nav className="NavBar-container u-title-arvo" >
-            <div className = "NavBar-logo">
-                 <div className = "Logo-ask u-inlineBlock">ask</div><div className = "Logo-MIT u-inlineBlock"> MIT</div>
+            <div className = "NavBarWelcome">
+                 Welcome!
             </div>
-            <div className = "RightLink-container u-inlineBlock">
-                <Link to="/" className = "NavBar-link">Login</Link>
+            <div className = "LoginNavBar">
+               Login
             </div>
             </nav>
         

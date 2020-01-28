@@ -20,11 +20,19 @@ import "./feed.css";
         userName = {this.props.userName}
         updateLikes = {this.props.updateLikes}
         />)
+    if (this.props.stories.length!==0){
         return(
             <div className = "FeedContainer">
             {feed1}
             </div>
-            );
+            );}
+    else{
+        return(
+            <div className ="NoStories u-title-arvo"> No stories to show! 
+                    Add more subscriptions to view stories
+                    </div>
+        )
+    }
 
     };
  }
