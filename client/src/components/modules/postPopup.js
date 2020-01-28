@@ -66,6 +66,7 @@ export default class PostPopup extends Component{
         });
       };
     handleSubmit = (event) => {
+        if(this.state.addedTags.length===0){return null}
         event.preventDefault();
         this.props.addPost(this.state.value, this.state.addedTags, this.state.anonymous);
         //test case
@@ -115,7 +116,7 @@ export default class PostPopup extends Component{
 
                     <textarea className="popUpInputfield"
                     type="text"
-                    defaultValue= "Post Something"
+                    // defaultValue= "Post Something"
                     placeholder="Whats your question?"
                     onChange={this.handleChange}
                     value= {this.state.value}

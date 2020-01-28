@@ -14,28 +14,6 @@ import { faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
  * 
  */
 
-// test state objects here
-let testCommentObj = {
-    creatorName: "Brian Ntanga",
-    time: Date.now(),
-    content: "test comment",
-    parentId: 3,
-    likes: 5,
-  }
-  let testCommentObj2 = {
-    creatorName: "Brayo ",
-    time: Date.now(),
-    content: "test comment 2",
-    parentId: 4,
-    likes: 5,
-  }
-  let testCommentObj3 = { 
-    creatorName: "Brayo ",
-    time: Date.now(),
-    content: "test comment 2",
-    parentId: 4,
-    likes: 5,
-  }
  
 
  class FullPost extends Component{
@@ -44,7 +22,7 @@ let testCommentObj = {
         this.state = {
             // test objects put in
             commentObjList : [],
-            showComments : true,
+            showComments : false,
             liked: false,
             questionLikes: this.props.storyObj.likes
         };

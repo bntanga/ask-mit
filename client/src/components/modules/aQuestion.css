@@ -16,8 +16,12 @@
 .CreatorName2{
     /* margin-left: 10px; */
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
     margin-left: 9px;
+}
+.CreatorName2:hover{
+    font-weight: 900;
+    cursor: pointer;
 }
 .TagsTime-container{
     display: flex;

@@ -1,5 +1,4 @@
 .Sidebar-container{
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -7,8 +6,8 @@
     position: fixed;
     width: 300px;
     left: 10px;
-    height: 80%;
-    background-color: #c4c4c4;
+    height: 80vh;
+    background-color: #A7AEB5;
     border-radius: 3px;
     opacity: 0.9;
     /* filter: brightness(140%) */
@@ -21,15 +20,25 @@
     /* background-color: #A7AEB5; */
     width: 310px;
     /* border-radius: 4px; */
-    border-bottom: 1px solid white;
-    border-top: 1px solid white;
+    border-bottom: 1px solid #F7F9FB;
+    border-top: 1px solid #F7F9FB;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 30px;
+    /* margin-right: 30px; */
     color: black;
 
     
+}
+.SideBarLink:hover{
+    font-size: 20px;
+    background-color: #c4c4c4;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.SideBarLink:active{
+    background-color: #CECCCC;
+    transition: 0.4s;
 }
 .SideBarName{
     /* margin-top: 100px; */

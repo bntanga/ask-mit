@@ -53,18 +53,20 @@
     justify-content: space-between;
     border: 2px solid #efefef;
     color: #3A4B5E;
+    transition: 0.3s;
 
     /* padding-right: 400px; */
 }
 .Tag-containerActive:hover{
     cursor: pointer;
+    transition: 0.3s;
 }
 .Tag-container:hover{
     cursor: pointer;
 }
 .Tag-container:active{
     background-color: #efefef;
-    /* transition: 3s; */
+    transition: 0.5s;
 }
 .HomeSubBarText{
     font-size: 14px; 

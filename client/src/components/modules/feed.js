@@ -28,8 +28,7 @@ import "./feed.css";
             );}
     else{
         return(
-            <div className ="NoStories u-title-arvo"> No stories to show! 
-                    Add more subscriptions to view stories
+            <div className ="NoStories u-title-arvo"> No questions to show! 
                     </div>
         )
     }
