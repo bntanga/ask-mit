@@ -6,7 +6,7 @@ import NavBar from "./modules/navBar";
 import Home from "./pages/home";
 import ProfilePage1 from "./pages/profilePage1";
 import ProfilePage3 from "./pages/profilePage3";
-import InitialLogin from "./pages/initialLogin";
+import InitialLogin from "./pages/initialLoginTest";
 
 
 import "../utilities.css";
@@ -138,9 +138,9 @@ class App extends Component {
           notificationsNumber: number,
         });
 
-        if(user.subscribedTags.length === 0) {
-          navigate("/initiallogin")
-        }
+        // if(user.subscribedTags.length === 0) {
+        //   navigate("/initiallogin")
+        // }
       }
     });
     socket.on("notification", (notification) => {
