@@ -5,21 +5,21 @@
     
     /* display: flex; */
     position: fixed;
-    left: 515px;
+    left: 35.6vw;
 
     z-index: 999999999;
 
     /* flex-direction: column; */
     /* background-color: ffffff; */
     /* color: white; */
-    width:590px;
-    min-height:300px;
+    width:41vw;
+    min-height:40vh;
     /* justify-content: space-evenly; */
     /* align-items: center; */
     background: #EFEFEF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius:5px;
-    top: 82px;
+    top: 12vh;
     /* margin-left: 165px; */
 
 }
@@ -29,10 +29,10 @@
 .popUpInputfield{
 
 
-    width:580px;
-    height:150px;
+    width:40.2vw;
+    height:22vh;
     outline: 0;
-    font-size: 16px;
+    font-size: 1.1vw;
     margin-top: 4px;
     border: 1px solid white;
     border-radius: 5px;
@@ -68,7 +68,7 @@
     /* margin-right: 85px; */
     /* margin:0px; */
     /* position: absolute */
-    margin: 10px;
+    margin:0.7vw;
 }
 
 
@@ -81,7 +81,7 @@
     border-radius: 10px;
     /* width:50px;
     height:20px; */
-    padding: 10px;
+    padding: 0.7vw;
     /* text-align: center; */
     /* justify-content: center; */
     align-items: center;
@@ -89,7 +89,7 @@
     margin: 4px;
     font-weight: 1px;
     color: #3A4B5E;
-    font-size: 10px;
+    font-size: 0.7vw;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 }
 
@@ -98,12 +98,12 @@
     color:white;
     background-color:#727965;
     border-radius: 10px;
-    padding: 10px;
+    padding: 0.7vw;
     align-items: center;
     justify-content: center;
     margin: 4px;
     font-weight: 1px;
-    font-size: 10px;
+    font-size: 0.7vw;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 }
 .tagButtonAlternate:hover{cursor: pointer;}
@@ -125,34 +125,34 @@
  bottom:54%;
 font-weight: 1px;
 color: #3A4B5E;
-font-size: 10px;
+font-size: 0.7vw;
 }
 .tagContainerText{
     font-weight: 1px;
     color: #3A4B5E;
-    font-size: 14px;
+    font-size: 1vw;
     /* margin-right: 430px; */
-    margin-top: 18px;
-    margin-bottom: 10px;
-    margin-left: 16px;
+    margin-top: 2.6vh;
+    margin-bottom: 2.4px;
+    margin-left: 1.1vw;
 }
 .RequiredText{
     display: inline-block;
     color: red;
-    margin-right: 5px;
+    margin-right: 0.5vw;
 }
 .SubmitCancel-container{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
-    margin-left: 14px;
-    margin-right:12px;
+    margin-bottom: 2vh;
+    margin-left: 1vw;
+    margin-right:0.85vw;
     /* justify-content: space-between; */
 }
 .CancelButton{
-    font-size: 12px;
+    font-size: 0.85vw;
     color: red;
 }
 .CancelButton:hover{
@@ -163,14 +163,13 @@ font-size: 10px;
     /* text-align: center; */
     align-items: center;
     justify-content: center;
-    font-size: 10px;
     /* background-color: #ffffff; */
     border-radius: 15px;
     /* width: 130px;
     height: 40px; */
     font-weight: 1px;
     color: green;
-    font-size: 14px;
+    font-size: 1vw;
 
 }
 .submitButton:hover{

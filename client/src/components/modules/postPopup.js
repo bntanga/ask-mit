@@ -66,7 +66,8 @@ export default class PostPopup extends Component{
         });
       };
     handleSubmit = (event) => {
-        if(this.state.addedTags.length===0){return null}
+        if(this.state.value.length===0){alert("You cannot submit an empty question!"); return null}
+        if(this.state.addedTags.length===0){alert("Select post tags!");return null}
         event.preventDefault();
         this.props.addPost(this.state.value, this.state.addedTags, this.state.anonymous);
         //test case

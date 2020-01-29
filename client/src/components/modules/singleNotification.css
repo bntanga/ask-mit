@@ -1,6 +1,6 @@
 .Notification-container{
     background-color: white;
-    width: 350px;
+    width: 24.5vw;
     /* min-height: 10px; */
     margin-top: 3px;
     border-radius: 6px;
@@ -13,7 +13,7 @@
     margin-bottom: 4px;
 }
 .CommenterName{
-    font-size: 12px;
+    font-size: 0.85vw;
     /* font-weight: 700; */
     display: inline-block;
     margin-right: 5px;
@@ -21,34 +21,34 @@
 }
 .FillerWord1{
     display: inline-block;
-    font-size: 12px;
+    font-size: 0.85vw;
     color: #3A4B5E;
 }
 .CommentContent1{
-    font-size: 12px;
+    font-size: 0.85vw;
     /* font-weight: 700; */
-    max-width: 320px;
+    max-width: 25vw;
     margin-bottom: 5px;
     /* margin-left: -30px; */
     /* margin-bottom: -5px; */
 }
 .FillerWord2{
-    font-size: 12px;
+    font-size: 0.85vw;
     margin-bottom: 4px;
     color: #3A4B5E;
 }
 .QuestionAnswered{
-    font-size: 12px;
+    font-size: 0.85vw;
     /* font-weight: 700; */
-    max-width: 320px;
+    max-width: 24vw;
 }
 .Time{
     font-weight: 1px;
     color: #3A4B5E;
     display: inline-block;
     /* text-align: center; */
-    padding-top: 10px;
-    font-size: 10px;
+    padding-top: 0.7vw;
+    font-size: 0.7vw;
 }
 .FlexItem1{
     display: flex;

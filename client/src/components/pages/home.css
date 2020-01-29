@@ -5,35 +5,25 @@
 .Feed{
     flex-direction: column;
     justify-content: center;
-    margin-left: 500px;
+    /* margin-left: 500px; */
+    position: relative;
+    left: 35vw;
 }
-/* .SubBar{
-    position: fixed;
-    left: 1000px;
-    top:200px;
-    flex-grow:1;
-} */
+
 
 .homeContainer{
 
  
-    margin-top: 65px;
-    /* display:flex;
-    flex-direction: column; */
-    /* align-content: center;
-    justify-content: center;
-    align-items: center; */
+    margin-top: 10vh;
 }
 
 .InputClick{
     background-color: #FFFFFF;
     /* filter: brightness(97%); */
-    width: 562px;
+    width: 39.2vw;
     /* padding-left: 200px; */
-    padding-top: 20px;
-    padding-bottom: 20px;
-    /* margin-left: 150px; */
-    top: 100px;
+    padding-top: 2.6vh;
+    padding-bottom: 2.6vh;
     border: 2px solid #556474;
     border-radius: 9px;
     /* padding-left: 11px; */

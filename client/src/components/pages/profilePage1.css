@@ -1,10 +1,11 @@
- /* .ProfilePage1-container{
+ .ProfilePage1-container{
     display: flex;
     justify-content: flex-start;
-    margin-top: 20px;
     flex-direction: row;
+    top: 16vh;
+    position: relative;
 
-}  */
+} 
 
 
 

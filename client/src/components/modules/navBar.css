@@ -8,24 +8,26 @@
     position: fixed;
     width:100%;
     z-index: 1000;
+    justify-content: space-between;
     /* filter: brightness(97%); */
 }
 .RightLink-container{
-    margin-left: 400px; 
-    font-size: 20px;
+    /* margin-left: 400px;  */
+    font-size: 1.4vw;
+    margin-right: 7vw;
 }
 .NavBar-link{
     color: #FFFFFF;
     text-decoration: none;
-    margin-left: 80px;
-    margin-right: 20px;
+    margin-left: 8vw;
+    /* margin-right: 20px; */
 }
 .NavBar-link:hover{
     cursor: pointer;
 }
 .NavBar-logo{
     text-decoration: none;
-    padding-left: 80px;
+    margin-left: 10vw;
     font-family: 'Calligraffitti';
     color: #FFFFFF;
     display: inline-block;
@@ -33,12 +35,14 @@
 }
 .Logo-ask{
     text-decoration: none;
-    padding-left: 80px;
+    /* padding-left: 80px; */
     padding-right:0px;
     margin-right:0px;
     font-family: 'Calligraffitti', sans-serif;
     color: white;
-    font-size: 40px;
+    font-size: 2.8vw;
+    font-weight: 900;
+    
 }
 .Logo-MIT{
     text-decoration: none;
@@ -46,7 +50,8 @@
     margin-left: 0px;
     font-family: 'Acme', sans-serif;
     color: white;
-    font-size: 40px;
+    font-size: 2.8vw;
+    font-weight: 900;
 }
 .NotificationsLayer{
     position: absolute;
@@ -60,7 +65,7 @@
 } 
 .Notifications-container{
     position: absolute;
-    width: 380px;
+    width: 26.7vw;
     /* height: 400px; */
     z-index: 99999;
     background-color: #c4c4c4;
@@ -117,17 +122,17 @@
 
 .NotificationsNumber{
     display: inline-block;
-    width: 9px;
-    height: 9px;
+    width: 0.98vw;
+    height: 0.98vw;
     /* height: 30px; */
 
-    border-radius: 15px;
+    border-radius: 1.3vw;
     background-color: white;
     display: inline-flex;
     justify-content: center;
     color: #B90000;
     margin-right: 2px;
-    font-size: 14px;
+    font-size: 1vw;
     font-weight: 20000;
     align-items: center;
     /* padding-bottom: 4px; */

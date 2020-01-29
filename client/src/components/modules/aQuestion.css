@@ -1,26 +1,22 @@
 .Story-container{
     background-color: white;
-    width: 570px;
+    width: 39.5vw; 
     /* padding: 1px 10px 50px 10px; */
-    min-height: 150px;
+    min-height: 24vh;
     border-radius: 5px;
     /* filter: brightness(97%); */
 }
 .CreatorName{
     text-decoration: none;
-        /* font-size: 16px;
-        padding-left: 12px;
-        padding-top: 5px;
-        padding-bottom: 5px; */
+
 }
 .CreatorName2{
     /* margin-left: 10px; */
-    font-size: 16px;
-    font-weight: 600;
-    margin-left: 9px;
+    font-size: 1.1vw;
+    font-weight: 800;
+    margin-left: 0.7vw;
 }
 .CreatorName2:hover{
-    font-weight: 900;
     cursor: pointer;
 }
 .TagsTime-container{
@@ -32,14 +28,14 @@
 .TimeContainer{
     font-weight: 1px;
     color: #3A4B5E;
-    padding-top: 10px;
-    font-size: 10px;
+    padding-top: 0.7vw;
+    font-size: 0.7vw;
 }
 .StoryContent{
-    font-size: 18px;
-    padding-top: 30px;
-    padding-bottom: 10px;
-    padding-left: 10px;
+    font-size: 1.26vw;
+    padding-top: 4.3vh;
+    padding-bottom: 1.5vh;
+    padding-left: 0.7vw;
     font-weight: bold;
 }
 
@@ -51,22 +47,16 @@ padding:5px;
 }
 .UserBio{
     font-style: italic;
-    font-size: 10px;
-    margin-left: 5px;
+    font-size: 0.7vw;
+    margin-left: 0.22vw;
 }
 
 .heartIcon{
     color: black;
-    font-size: 10px;
+    font-size: 0.7vw;
     font-weight: 900;
     /* border: 3px solid black; */
 }
 .heartIcon:hover{
     cursor: pointer;
-}
-.LikesNumber{
-    font-size: 50px;
-    display: inline;
-    margin-left: 6px;
-    /* padding-bottom: 100px; */
 }

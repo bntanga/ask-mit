@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./initialLoginTest.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
+import {faTrashAlt} from '@fortawesome/free-regular-svg-icons';
 import plusIcon from "../modules/images/add4.png";
 import trashIcon from "../modules/images/trash3.png";
 import downArrow from "../modules/images/arrow.png";
@@ -123,7 +124,7 @@ class InitialLogin extends Component{
         let subscribedBlock = (this.props.subscribedTags
             .map((tag)=> <div  className = "Tag-container2">
                 {tag}
-            <div className = "TrashIcon1" onClick = {()=>this.removeSubscription(tag)}><img src = {trashIcon}/></div></div>))
+            <div className = "TrashIcon1" onClick = {()=>this.removeSubscription(tag)}><FontAwesomeIcon icon = {faTrashAlt}/></div></div>))
         let unsubBlock = (this.state.ungrouped
             .map((tag)=><div  className = "Tag-container2">
                 {tag}<div className = "plusIcon1" onClick= {()=>this.addSubscriptionDropDown(tag)}><img src = {plusIcon}/></div></div>))

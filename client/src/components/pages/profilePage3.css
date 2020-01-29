@@ -3,6 +3,7 @@
     flex-direction: row;
     justify-content: center;
     position: relative;
-    left: 150px;
-    top: 100px;
+    left: 11vw;
+    top: 16vh;
+    max-height: 100vh;
 }  

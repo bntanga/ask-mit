@@ -40,12 +40,7 @@ class Skeleton extends Component {
         <div className = "GoogleButton FlexItem3">
         {this.props.userId ? 
           // navigate("/home")
-          <GoogleLogout 
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Logout"
-            onLogoutSuccess={this.props.handleLogout}
-            onFailure={(err) => console.log(err)}
-          />
+          null
          : (
           <GoogleLogin
             clientId={GOOGLE_CLIENT_ID}

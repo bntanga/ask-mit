@@ -22,7 +22,7 @@ import { faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
         this.state = {
             // test objects put in
             commentObjList : [],
-            showComments : false,
+            showComments : true,
         };
       }
 

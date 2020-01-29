@@ -18,6 +18,7 @@ class CommentInput extends Component{
         });
       };
     handleSubmit = (event) => {
+        if (this.state.value.length===0){alert("You cannot submit an empty comment"); return null}
         event.preventDefault();
         this.props.addComment(this.state.value);
         this.setState({

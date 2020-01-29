@@ -5,7 +5,7 @@ import {faTimes} from '@fortawesome/free-solid-svg-icons';
 import {faTrashAlt} from '@fortawesome/free-regular-svg-icons';
 import plusIcon from "./images/add4.png";
 import trashIcon from "./images/trash3.png";
-import downArrow from "./images/arrow.png";
+import downArrow from "./images/arrow.png"; 
 import upArrow from "./images/upArrow.png";
 
 const ALL_DORMS = ["Simmons Hall", "Baker House", "New House", "MacGregor House", 

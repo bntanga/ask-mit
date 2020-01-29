@@ -35,8 +35,6 @@ class ProfilePage1 extends Component{
         this.setState({ListOfStoryObj: renderedQuestions})});
     }
     render(){
-        console.log("userid IN PP ",this.props.userId)
-         console.log(" user router ID in pp ", this.props.userRouterId)
 
         return(
             <div className = "ProfilePage1-container">
