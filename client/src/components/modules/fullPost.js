@@ -23,26 +23,12 @@ import { faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
             // test objects put in
             commentObjList : [],
             showComments : false,
-            liked: false,
-            questionLikes: this.props.storyObj.likes
         };
       }
-    isLiked=()=>{
-      if (this.state.liked){
-          this.setState({liked: false,
-          })
-          this.state.questionLikes --
-      } else {
-          this.setState({liked:true,
-              })
-          this.state.questionLikes ++
-          }
-        console.log("question likes ",this.state.questionLikes)
-      }
+
     onClick = () => { 
-      this.isLiked();
-      this.props.updateLikes(this.state.liked, this.props.storyObj._id)
-        }
+      this.props.updateLikes(this.props.storyObj._id).then(this.props.refreshUser);
+    }
     displayComments=()=>{
           if (this.state.showComments){
             this.setState({showComments: false})
@@ -114,25 +100,13 @@ import { faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
         {commentObjList: [comment].concat(this.state.commentObjList)})
       )
     }
-    updateLikes= (isLiked, Id) =>{
-      put("/api/commentlikes",{_id:Id, add:!isLiked}).then((comment)=>
-      get("/api/comments",{parentId: comment.parentId}).then((comments)=>
-      this.setState({commentObjList: comments.reverse()})));
-    //       if (isLiked){
-    //         //must return new comment obj
-    //         put("api/commentlikes", {_id: Id, add: false})
-    //  }else{
-    //   put("api/commentlikes", {_id: Id, add: true})
-    //  }
+    updateLikes= (Id) =>{
+      return put("/api/commentlikes",{_id:Id}).then((comment)=>
+        get("/api/comments",{parentId: comment.parentId}).then((comments)=>
+          this.setState({commentObjList: comments.reverse()})));
+ 
     }
-    // componentDidUpdate() {
-    //   get("/api/comments",{parentId: this.props.storyObj._id})
-    //   .then((comments)=>{
-    //     if (this.state.commentObjList !== comments) {
-    //       this.setState({commentObjList: comments}) };
-    //     })
-        
-    // }
+ 
     componentDidMount(){
       get("/api/comments",{parentId: this.props.storyObj._id})
       .then((comments)=>{ 
@@ -140,44 +114,29 @@ import { faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
       this.setState({commentObjList: commentObjs}) });
     }
     render(){
-      if(this.state.showComments){
         return(
           <div className = "fullPost-container">
                 <AStory storyObj = {this.props.storyObj} postTags = {this.props.storyObj.postTags}/>
               <div className = "LikesCommentButton-container">
                 <div className = "Likes-container">
-                    <FontAwesomeIcon icon = {this.state.liked ? faHeartFilled : faHeart}
+                    <FontAwesomeIcon icon = {this.props.likedPosts.includes(this.props.storyObj._id) ? faHeartFilled : faHeart}
                     className = "heartIcon" 
                     onClick = {this.onClick}
                     />
-                    <div className = "LikesNumber">{this.state.questionLikes}</div>
+                    <div className = "LikesNumber">{this.props.storyObj.likes}</div>
                 </div>
-                <div className = "ShowCommentsButon u-title-arvo" onClick = {this.displayComments}>Hide comments</div>
-              </div>
-                <CommentInput addComment = {this.addComment}/>
+        <div className = "ShowCommentsButon u-title-arvo" onClick = {this.displayComments}>{this.state.showComments ? "Hide comments" : "Show comments"}</div>
+        </div>
+        {this.state.showComments ? (<><CommentInput addComment = {this.addComment}/>
                 <CommentsBlock 
                 commentObjList = {this.state.commentObjList}
                 updateLikes = {this.updateLikes}
-                />
+                likedComments = {this.props.likedComments}
+                refreshUser = {this.props.refreshUser}
+                /></>) : null}
+                
             </div>
           ) 
-      }
-      else{
-        return (
-        <div className = "fullPost-container">
-            <AStory storyObj = {this.props.storyObj} postTags = {this.props.storyObj.postTags}/>
-          <div className = "LikesCommentButton-container">
-              <div className = "Likes-container">
-                <FontAwesomeIcon icon = {this.state.liked ? faHeartFilled : faHeart}
-                className = "heartIcon" 
-                onClick = {this.onClick}
-                />
-             <div className = "LikesNumber">{this.state.questionLikes}</div>
-            </div>
-            <div className = "ShowCommentsButon u-title-arvo" onClick = {this.displayComments}>Show comments</div>
-            </div>
-        </div>
-    );}
         
     }
     

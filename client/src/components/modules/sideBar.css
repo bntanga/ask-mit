@@ -51,6 +51,8 @@
 .UserBio1{
     font-style: italic;
     font-size: 12px;
+    max-width: 280px;
+    margin-left: 15px;
     
 }
 .NameBio-container{

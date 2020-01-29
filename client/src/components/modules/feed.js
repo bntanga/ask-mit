@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FullPost from "./fullPost";
 import "./feed.css";
+import { get } from "../../utilities";
 /**
  * @param {Array} stories to render
  * @param {string} userName of person logged in
@@ -11,7 +12,22 @@ import "./feed.css";
      // TODO: handle case when no stories
     constructor(props) {
         super(props);
+        this.state = {
+            likedPosts: [],
+            likedComments: []
         }
+    }
+
+    componentDidMount() {
+        this.refreshUser();
+    }
+
+    refreshUser = () => {
+        get("/api/whoami").then(user => {
+            this.setState({likedPosts: user.likedPosts, likedComments: user.likedComments});
+        });
+    }
+    
     render(){
         let feed1 = this.props.stories
         .map((storyObj, i)=> <FullPost 
@@ -19,6 +35,9 @@ import "./feed.css";
         key={`FullPost-${storyObj._id}`}
         userName = {this.props.userName}
         updateLikes = {this.props.updateLikes}
+        likedPosts = {this.state.likedPosts}
+        likedComments = {this.state.likedComments}
+        refreshUser = {this.refreshUser}
         />)
     if (this.props.stories.length!==0){
         return(

@@ -11,26 +11,11 @@ import { faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
 
 class AComment extends Component {
     constructor(props) {
-        super(props);
-        this.state = {
-            liked: false,
-            commentLikes: this.props.commentObj.likes
-        }
+        super(props); 
       }
-    isLiked=()=>{
-        if (this.state.liked){
-            this.setState({liked: false,
-            })
-            this.state.commentLikes --
-        } else {
-            this.setState({liked:true,
-                })
-            this.state.commentLikes ++
-            }
-        }
+
     onClick = () => { 
-        this.isLiked();
-        this.props.updateLikes(this.state.liked, this.props.commentObj._id)
+        this.props.updateLikes( this.props.commentObj._id).then(this.props.refreshUser);
     }
     render (){
         return (
@@ -42,11 +27,11 @@ class AComment extends Component {
             <div className = "CommentContent">{this.props.commentObj.content}</div>
             <div className = "CommentLikes-container"> 
             {/* <FontAwesomeIcon icon = {faHeart} className = "heartIcon"/>  */}
-            <FontAwesomeIcon icon = {this.state.liked ? faHeartFilled : faHeart} 
+            <FontAwesomeIcon icon = {this.props.likedComments.includes(this.props.commentObj._id) ? faHeartFilled : faHeart} 
             className = "heartIcon" 
             onClick = {this.onClick}/>
              {/* onClick = {()=>{()=>this.props.updateLikes(this.state.liked, this.props.commentObj._id)};this.isLiked()}/> */}
-             <div className = "LikesNumber"> {this.state.commentLikes}</div>
+             <div className = "LikesNumber"> {this.props.commentObj.likes}</div>
             </div>
         </div>)
         

@@ -48,8 +48,8 @@ class Home extends Component {
       });
       }
     }
-      updateLikes= (isLiked, Id) =>{
-        put("/api/questionlikes",{_id:Id, add:!isLiked}).then((question)=>{
+      updateLikes= (Id) =>{
+        return put("/api/questionlikes",{_id:Id}).then((question)=>{
         if (this.state.activeTag){
           get("api/questions", {postTags:[this.state.activeTag]}).then((questionsList)=>
           {let renderedList = questionsList.reverse();

@@ -6,6 +6,8 @@ const UserSchema = new mongoose.Schema({
   subscribedTags: [String],
   bio: String,
   notifications: Array, 
+  likedPosts : [],
+  likedComments: [],
 });
 
 // compile model from schema

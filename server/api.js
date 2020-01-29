@@ -32,7 +32,9 @@ router.get("/whoami", (req, res) => {
     return res.send({});
   }
 
-  res.send(req.user);
+  User.findById(req.user._id).then(user => {
+    res.send(user);
+  });
 });
 
 router.post("/initsocket", (req, res) => {
@@ -175,22 +177,75 @@ router.put("/usertags",(req, res)=>{
   } 
 )
 })
-router.put("/commentlikes", (req,res)=>{
-  Comment.findById(req.body._id).then((commentFound)=>{
-    if(req.body.add) {commentFound.likes ++}
-    else {commentFound.likes --}
-    commentFound.save()
-    res.send(commentFound)
-  })
-})
+
 router.put("/questionlikes",(req,res)=>{
-  Question.findById(req.body._id).then((questionFound)=>{
-    if(req.body.add){questionFound.likes++}
-    else{questionFound.likes--}
-    questionFound.save()
-    res.send(questionFound)
+  User.findById(req.user._id).then((user)=>{
+  if (user.likedPosts.includes(req.body._id)){
+    Question.findOne({_id:req.body._id}).then((questionFound)=>{
+      questionFound.likes--
+      user.likedPosts.splice(user.likedPosts.indexOf(req.body._id),1)
+      user.save()
+      req.user.likedPosts = user.likedPosts
+      questionFound.save()
+      res.send(questionFound)
+      console.log("question found ", questionFound)
+    })
+  }else{
+    Question.findOne({_id:req.body._id}).then((questionFound)=>{
+      console.log("quesiton founf ", questionFound)
+      questionFound.likes++
+      user.likedPosts.push(req.body._id)
+      user.save()
+      req.user.likedPosts = user.likedPosts
+      questionFound.save()
+      res.send(questionFound)
+    })
+  
+  }
+
+
   })
+
+
 })
+router.put("/commentlikes",(req,res)=>{
+  User.findById(req.user._id).then((user)=>{
+  console.log(user.likedComments);
+  if (user.likedComments.includes(req.body._id)){
+    Comment.findOne({_id:req.body._id}).then((commentFound)=>{
+      commentFound.likes--
+      user.likedComments.splice(user.likedComments.indexOf(req.body._id),1)
+      user.save()
+      req.user.likedComments = user.likedComments
+      commentFound.save()
+      res.send(commentFound)
+      console.log("question found ", commentFound)
+    })
+  }else{
+    Comment.findOne({_id:req.body._id}).then((commentFound)=>{
+      commentFound.likes++
+      user.likedComments.push(req.body._id)
+      user.save()
+      req.user.likedComments = user.likedComments
+      commentFound.save()
+      res.send(commentFound)
+    })
+  
+  }
+
+
+  })
+
+
+})
+// router.put("/questionlikes",(req,res)=>{
+//   Question.findById(req.body._id).then((questionFound)=>{
+//     if(req.body.add){questionFound.likes++}
+//     else{questionFound.likes--}
+//     questionFound.save()
+//     res.send(questionFound)
+//   })
+// })
 router.put("/editbio",(req,res)=>{
   console.log("new bio ", req.body.newBio)
   User.findById(req.user._id).then((user)=>{

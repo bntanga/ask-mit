@@ -29,6 +29,8 @@ function getOrCreateUser(user) {
       subscribedTags: [],
       bio: "Random test bio",
       notifications: [],
+      likedPosts :[],
+      likedComments:[]
     });
 
     return newUser.save();
