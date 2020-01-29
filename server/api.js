@@ -186,11 +186,9 @@ router.put("/questionlikes",auth.ensureLoggedIn,(req,res)=>{
       req.user.likedPosts = user.likedPosts
       questionFound.save()
       res.send(questionFound)
-      console.log("question found ", questionFound)
     })
   }else{
     Question.findOne({_id:req.body._id}).then((questionFound)=>{
-      console.log("quesiton founf ", questionFound)
       questionFound.likes++
       user.likedPosts.push(req.body._id)
       user.save()
@@ -208,7 +206,6 @@ router.put("/questionlikes",auth.ensureLoggedIn,(req,res)=>{
 })
 router.put("/commentlikes",auth.ensureLoggedIn,(req,res)=>{
   User.findById(req.user._id).then((user)=>{
-  console.log(user.likedComments);
   if (user.likedComments.includes(req.body._id)){
     Comment.findOne({_id:req.body._id}).then((commentFound)=>{
       commentFound.likes--
@@ -217,7 +214,6 @@ router.put("/commentlikes",auth.ensureLoggedIn,(req,res)=>{
       req.user.likedComments = user.likedComments
       commentFound.save()
       res.send(commentFound)
-      console.log("question found ", commentFound)
     })
   }else{
     Comment.findOne({_id:req.body._id}).then((commentFound)=>{
@@ -245,7 +241,6 @@ router.put("/commentlikes",auth.ensureLoggedIn,(req,res)=>{
 //   })
 // })
 router.put("/editbio",auth.ensureLoggedIn,(req,res)=>{
-  console.log("new bio ", req.body.newBio)
   User.findById(req.user._id).then((user)=>{
     user.bio = req.body.newBio
     user.save().then((user)=>res.send(user))
