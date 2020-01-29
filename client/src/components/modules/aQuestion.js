@@ -20,7 +20,7 @@ class AStory extends Component {
         <div>
             <Link to = {`/profilepage1/${this.props.storyObj.creatorId}`} className = "u-title-arvo CreatorName">
             <div className = "CreatorName2">{this.props.storyObj.creatorName}</div>
-            <div className = "UserBio u-title-arvo">Lover of all things chess</div>
+            <div className = "UserBio u-title-arvo">{this.props.storyObj.creatorBio}</div>
             </Link>
             <div className = "Story-container">
                 <div className = "TagsTime-container u-title-arvo">

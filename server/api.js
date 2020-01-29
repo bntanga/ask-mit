@@ -52,6 +52,7 @@ router.post("/questions", auth.ensureLoggedIn, (req, res) =>{
   content: req.body.content,
   likes: req.body.likes,
   postTags: req.body.postTags,
+  creatorBio: req.body.creatorBio,
   });
   newQuestion.save().then((question)=>res.send(question));
 } );
@@ -73,7 +74,7 @@ res.send(allQuestions);
 
 router.post("/comments", (req,res)=> {
   const newComment = new Comment({
-    creatorName: req.body.creatorName,
+    creatorName: req.user.name,
     creatorId: req.body.creatorId,
     time: req.body.time,
     content: req.body.content,
@@ -189,6 +190,15 @@ router.put("/questionlikes",(req,res)=>{
     questionFound.save()
     res.send(questionFound)
   })
+})
+router.put("/editbio",(req,res)=>{
+  console.log("new bio ", req.body.newBio)
+  User.findById(req.user._id).then((user)=>{
+    user.bio = req.body.newBio
+    user.save().then((user)=>res.send(user))
+    req.user.bio = user.bio;
+  })
+
 })
 router.post("/makenotificationsread",(req,res)=>{
     User.findById(req.user._id).then((user)=>{

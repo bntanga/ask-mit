@@ -2,10 +2,10 @@
 .HomeSubBar-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     left: 150px;
     position: fixed;
-    top: 122px;
+    top: 20vh;
     background-color: #efefef;
     border-radius: 7px;
     padding-top: 20px;
@@ -70,8 +70,9 @@
 }
 .HomeSubBarText{
     font-size: 14px; 
-    padding-left: 12px;
+    padding-left: 2vw;
     color: #3A4B5E;
+    
 }
 
 .ImageTag{

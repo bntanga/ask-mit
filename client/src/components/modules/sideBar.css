@@ -9,7 +9,8 @@
     height: 80vh;
     background-color: #A7AEB5;
     border-radius: 3px;
-    opacity: 0.9;
+    /* opacity: 0.9; */
+    z-index: 10000;
     /* filter: brightness(140%) */
     /* filter: brightness(130%); */
 
@@ -71,4 +72,7 @@
 }
 .Logout{
     border-bottom: 2px solid white;
+}
+.EditBioContainer{
+    z-index: 100000;
 }

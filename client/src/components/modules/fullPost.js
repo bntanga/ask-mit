@@ -109,7 +109,7 @@ import { faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
         likes: 0,
       }
 
-      post("api/comments", commentObj24).then((comment)=>
+      post("/api/comments", commentObj24).then((comment)=>
       this.setState(
         {commentObjList: [comment].concat(this.state.commentObjList)})
       )

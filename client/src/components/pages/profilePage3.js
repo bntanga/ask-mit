@@ -23,6 +23,7 @@ class ProfilePage3 extends Component{
                 userId = {this.props.userId}
                 userRouterId = {this.props.userRouterId}
                 handleLogout = {this.props.handleLogout}
+                editBio = {this.props.editBio}
                 />
                 <ManageSubsTest
                 subscribedTags = {this.props.subscribedTags}

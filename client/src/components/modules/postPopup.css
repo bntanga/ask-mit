@@ -24,14 +24,6 @@
 
 }
 
-.popUpContainerAlternate{
-
-
-    /* visibility: hidden; */
-    
-    display: none;
-
-}
 
 
 .popUpInputfield{
@@ -57,6 +49,8 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+    background-color: #00000044;
+    position: fixed;
 
     z-index: 10000;
     /* filter: blur(8px); */

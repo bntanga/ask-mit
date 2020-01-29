@@ -22,20 +22,6 @@ import { get, post, put } from "../utilities";
 // debugging test objects will be defined here
 
 
-let testSubScribedTags = ["General","Academic","Social","Food","Mental Health","Dorm Life"];
-let testUserObject = {
-  userName: "Bringes Mingles",
-  googleid: "123",
-  subscribedTags: ["Academics",  "Dorm Life"]
-}
-let testNotification = {
-      senderName: " Mr Bringles",
-      commentContent: "Halllooooooooo",
-      commentTime: "this time",
-      questionAnswered: "Ndechikumbwa chigelo chaba headdddd",
-      isRead: false, 
-}
-
 /**
  * Define the "App" component as a class.
  */
@@ -116,6 +102,9 @@ class App extends Component {
       }
     
 
+  }
+  editBio = (bio)=>{
+    return put("/api/editbio", {newBio:bio }).then((user1)=>this.setState({user: user1 }));
   }
 
   componentDidMount() {
@@ -208,6 +197,7 @@ class App extends Component {
           userName = {this.state.user.name}
           userId = {this.state.userId}
           handleLogout = {this.handleLogout}
+          editBio = {this.editBio}
           />
 
           < ProfilePage3 
@@ -219,6 +209,7 @@ class App extends Component {
           removeSubscription = {this.removeSubscription}
           userId = {this.state.userId}
           handleLogout = {this.handleLogout}
+          editBio = {this.editBio}
           />
           <InitialLogin
           path = "/initiallogin"

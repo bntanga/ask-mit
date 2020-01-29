@@ -7,6 +7,7 @@ const StorySchema = new mongoose.Schema({
   content: String,
   likes: Number,
   postTags: [String],
+  creatorBio: String,
 });
 
 // compile model from schema

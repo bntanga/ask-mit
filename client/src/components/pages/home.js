@@ -65,14 +65,9 @@ class Home extends Component {
       }//end of else
 
       }//first call back
-        
-        
-        
+              
         
         )
-
-
-
 
 
 
@@ -148,7 +143,8 @@ getCurrentDate = () => {
           time: this.getCurrentDate(),
           content: storyContent,
           likes: 0,
-          postTags: postTags1
+          postTags: postTags1,
+          creatorBio: ""
         }
       }
       else{
@@ -159,8 +155,8 @@ getCurrentDate = () => {
                        time:this.getCurrentDate(),
                        content: storyContent,
                        likes:0,
-                       //change this to user input
-                       postTags: postTags1
+                       postTags: postTags1,
+                       creatorBio: this.props.userObj.bio,
         }}
       post("api/questions",storyObj24)
       .then((question)=> {

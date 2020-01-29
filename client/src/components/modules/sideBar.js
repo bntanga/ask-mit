@@ -3,6 +3,7 @@ import { Link } from "@reach/router";
 import "./sideBar.css";
 import { GoogleLogout } from "react-google-login";
 import { get } from "../../utilities";
+import EditBio from "./editBio";
 
 /**
  * @param {string} userName of profile owner
@@ -14,26 +15,43 @@ class SideBar extends Component{
         super(props);
         this.state={
             userName: "",
-            userBio: ""
+            userBio: "",
+            showBio: false,
+
         }
-      }
-    // componentDidMount(){
-    //     // get("/api/usernameandbio",{userId: this.props.userId});
-    // }
+    }
+
+    editBioAndUpdate = (bio) => {
+        this.props.editBio(bio).then(() => {
+            get("/api/usernameandbio",{userId:this.props.userRouterId})
+        .then((data)=>this.setState({userName:data.userName, userBio:data.userBio}));
+        });
+    }
+ 
+    showBioFunc =()=>{
+        if (this.state.showBio){this.setState({showBio:false})}
+        else(this.setState({showBio:true}))
+    }
     componentDidMount(){
         get("/api/usernameandbio",{userId:this.props.userRouterId})
         .then((data)=>this.setState({userName:data.userName, userBio:data.userBio}));
     }
     render(){
         if (this.props.userRouterId===this.props.userId){
-            console.log("my user ID ",this.props.userId)
-            console.log("other ID ", this.props.userRouterId)
         return( 
         <div className = "Sidebar-container u-title-arvo"> 
             <div className = "NameBio-container">
                 <div className = "SideBarName ">{this.state.userName}</div>
                 <div className = "UserBio1">{this.state.userBio}</div>
+                <div 
+                onClick = {this.showBioFunc}
+                className = "EditBioButton">
+                    Edit Bio</div>
+                {this.state.showBio? <div className = "EditBioContainer"><EditBio 
+                handleSubmit = {this.showBioFunc}
+                editBio = {this.editBioAndUpdate}/></div>:null}
             </div>
+
             <div className = "u-title-arvo">
                 <div className = "SideBarLink QuestionsAsked">
                     <Link to =  {`/profilepage1/${this.props.userId}`}

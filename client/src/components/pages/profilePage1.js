@@ -45,6 +45,7 @@ class ProfilePage1 extends Component{
                 userId = {this.props.userId}
                 userRouterId = {this.props.userRouterId}
                 handleLogout = {this.props.handleLogout}
+                editBio = {this.props.editBio}
                 />
                 </div>
                 <div><QuestionsAsked 

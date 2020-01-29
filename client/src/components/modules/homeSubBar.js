@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import "./homeSubBar.css";
-import  simmons from "./images/simmons.jpg";
+import  simmons from "./images/simmons1.jpg";
 import  baker from "./images/baker.jpg";
-import  business from "./images/business.jpg";
-import  academic from "./images/academic.png";
-import  classOf20 from "./images/classOf20.jpg";
-import  classOf21 from "./images/classOf21.png";
-import  classOf22 from "./images/classOf22.jpg";
-import  classOf23 from "./images/classOf23.jpg";
-import  clubs from "./images/clubs.jpg";
+import  business from "./images/business1.png";
+import  academic from "./images/academic2.jpg";
+import  classOf20 from "./images/classOf201.jpg";
+import  classOf21 from "./images/classOf213.jpg";
+import  classOf22 from "./images/classOf221.jpg";
+import  classOf23 from "./images/classOf235.jpg";
+import  clubs from "./images/clubs2.jpg";
 import  eastCampus from "./images/eastCampus.jpg";
-import  food from "./images/food.jpg";
-import  general from "./images/general.jpg";
+import  food from "./images/food4.jpg";
+import  general from "./images/general2.jpg";
 import  macgregor from "./images/macgregor.jpg";
-import  mentalHealth from "./images/mentalHealth.png";
+import  mentalHealth from "./images/mentalHealth3.jpg";
 import  newHouse from "./images/newHouse.jpg";
 import  next from "./images/next.jpg";
-import  other from "./images/other.jpg";
+import  other from "./images/other1.jpg";
 import  random from "./images/random.jpg";
-import  social from "./images/social.jpg";
+import  social from "./images/social1.jpg";
 import  sports from "./images/sports.jpg";
 import mcCormick from "./images/mccormick.jpg";
 import burtonConner from "./images/burtonConner.jpg";
@@ -76,10 +76,14 @@ const imageMap = {
                     {tag} <div></div>
                     </div>)
         return (
+           
+            
             <div className = "HomeSubBar-container u-title-arvo">
                 <div className = "HomeSubBarText">Your Subscriptions</div>
+                
                 {tags}
             </div>
+      
         )
     }  
  }
