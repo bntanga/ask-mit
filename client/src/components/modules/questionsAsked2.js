@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FullPost from "./fullPost";
 import { get } from "../../utilities";
-import "./QuestionsAsked.css";
+import "./questionsAsked.css";
 
 class QuestionsAsked extends Component{
     constructor(props) {
