@@ -5,15 +5,8 @@
     padding: var(--m) var(--m);
     margin: auto;
     background-color: #F7F9FB;
+    background-position: center;
     /* background-image: url("./pages/images/fishnets-and-hearts.png"); */
     /* filter: brightness(95%); */
   
 }
-/* .Background-container{
-    background-color: #F5F5F5;
-    padding-left: 100px;
-    
-} */
-/* .Background-container{
-    background-color: #E5E5E5;
-} */

@@ -45,7 +45,7 @@ class EditBio extends Component{
                     />
 
 
-                        <div className = "SubmitCancel-container1">
+                        <div className = "SubmitCancel1-container">
                             
                             <div className = "CancelButton1 u-title-arvo"
                             onClick = {this.props.handleSubmit}>

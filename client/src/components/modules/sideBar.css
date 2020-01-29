@@ -32,7 +32,7 @@
     
 }
 .SideBarLink:hover{
-    font-size: 20px;
+    /* font-size: 20px; */
     background-color: #c4c4c4;
     cursor: pointer;
     transition: 0.4s;
@@ -55,7 +55,7 @@
 }
 .NameBio-container{
     /* padding: 10px; */
-    height: 160px;
+    height: 200px;
     width:300px;
     display: flex;
     flex-direction: column;
@@ -74,5 +74,15 @@
     border-bottom: 2px solid white;
 }
 .EditBioContainer{
-    z-index: 100000;
+    z-index: 10;
+}
+
+.EditBioButton{
+    font-size: 12px;
+    position: relative;
+    top: 7vh;
+    left: 9vw;
+}
+.EditBioButton:hover{
+    cursor: pointer;
 }

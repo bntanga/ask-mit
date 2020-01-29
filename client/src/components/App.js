@@ -32,10 +32,10 @@ class App extends Component {
     this.state = {
       userId: undefined,
       allTags: ["General", "Academic", "Social", "Business",
-       "Mental Health", "Food", "Clubs", "Other",
+       "Mental Health", "Food", "Clubs",
        "Class of 20", "Class of 21", "Class of 22", "Class of 23",
        "Simmons Hall", "Baker House", "New House", "MacGregor House", 
-       "Random Hall", "East Campus", "McCormick Hall", "Next House", "Burton Conner" ],
+       "Random Hall", "East Campus", "McCormick Hall", "Next House", "Burton Conner","Other"],
       user: '',
       unsubscribedTags: [],
       subscribedTags: [],
