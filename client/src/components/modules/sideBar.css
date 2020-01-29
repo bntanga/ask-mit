@@ -52,7 +52,7 @@
     font-style: italic;
     font-size: 0.85vw;
     max-width: 22vw;
-    margin-left: 1.2vw;
+    margin-left: 1.5vw;
     
 }
 .NameBio-container{
@@ -87,4 +87,13 @@
 }
 .EditBioButton:hover{
     cursor: pointer;
+}
+.Skele-button2{
+    background-color: #A7AEB5;
+    width:21.6vw;
+    border-bottom: 2px solid white;
+
+}
+.Skele-button-text2{
+    font-size: 1vw;
 }

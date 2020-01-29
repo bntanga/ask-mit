@@ -27,7 +27,7 @@ class Skeleton extends Component {
   render() {
     return (
       <div className = "Background">
-        
+        <div className = "WordsContent">
         <div className = "Logo1 FlexItem1">
           <div className = "Logo-ask1 u-inlineBlock">ask</div>
           <div className = "Logo-MIT1 u-inlineBlock"> MIT</div>
@@ -44,11 +44,17 @@ class Skeleton extends Component {
          : (
           <GoogleLogin
             clientId={GOOGLE_CLIENT_ID}
+            render={(renderProps) => (
+              <button className="Skele-button u-pointer" onClick={renderProps.onClick}>
+                <span className="Skele-button-text u-title-arvo">Login with google</span>
+              </button>
+            )}
             buttonText="Login with google"
             onSuccess={this.props.handleLogin}
             onFailure={(err) => console.log(err)}
           />
         )}
+        </div>
         </div>
         </div>
         </div>

@@ -104,20 +104,25 @@
 
 }
 .LoginNavBar{
+margin-right: 5vw;
+}
+.Skele-button1{
     color: white;
     padding: 0px;
-    font-size: 16px;
-    margin-left: 1000px;
+    font-size: 1.2vw;
     border: 1px solid white;
     border-radius: 15px;
     padding: 5px 15px;
-    /* position: absolute; */
+    background-color: #3E4B5D; 
+}
+.Skele-button-text1{
+    color: white;
 }
 .NavBarWelcome{
     color: white;
-    font-size: 18px;
-    margin-left: 70px;
-    padding: 20px;
+    font-size: 1.3vw;
+    margin-left: 7vw;
+    padding: 1.1vw;
 }
 
 .NotificationsNumber{

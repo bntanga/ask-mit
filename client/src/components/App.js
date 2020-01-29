@@ -183,6 +183,7 @@ class App extends Component {
         makeNotificationsRead = {this.makeNotificationsRead}
         makeRerender = {this.resetHomePageFilters}
         notificationsNumber = {this.state.notificationsNumber}
+        handleLogin={this.handleLogin}
         />
         <div className =  "App-container">
         <Router>

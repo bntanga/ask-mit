@@ -74,7 +74,7 @@ const allQuestions = await Question.find({postTags: {$in: queryTags}});
 res.send(allQuestions);
 });
 
-router.post("/comments", (req,res)=> {
+router.post("/comments",auth.ensureLoggedIn,(req,res)=> {
   const newComment = new Comment({
     creatorName: req.user.name,
     creatorId: req.body.creatorId,
@@ -99,10 +99,8 @@ router.post("/comments", (req,res)=> {
       isRead: false, 
     }
   userFound.notifications.push(newNotification);
-  console.log(" notification found in api" , newNotification)
   userFound.save();
   //mayyybbeeee
-  console.log("Is this the creator ID  ", questionFound.creatorId)
   socket.getSocketFromUserID(questionFound.creatorId).emit("notification", newNotification);
       
       }
@@ -119,19 +117,19 @@ router.get("/comments", (req,res)=> {
   // console.log("comments queried: ", comments)
   res.send(comments)})
 })
-router.get("/userquestions", (req,res)=> {
+router.get("/userquestions", auth.ensureLoggedIn,(req,res)=> {
   Question.find({creatorId: req.query.creatorId})
   .then((questions)=>{
   res.send(questions)})
 
 })
-router.get("/user", (req,res)=>  
+router.get("/user", auth.ensureLoggedIn,(req,res)=>  
   {
     // console.log(req.query) 
   User.find({_id:req.query.userId}).then((user)=>res.send(user) )})
 
 
-router.post("/addsubscription", (req, res) => {
+router.post("/addsubscription", auth.ensureLoggedIn,(req, res) => {
   let tag = req.query.tag;
 
   User.findById(req.user._id).then((user)=> {
@@ -150,7 +148,7 @@ router.post("/addsubscription", (req, res) => {
   })
 });
 
-router.post("/removesubscription", (req, res) => {
+router.post("/removesubscription",auth.ensureLoggedIn, (req, res) => {
   let tag = req.query.tag;
 
   User.findById(req.user._id).then((user)=> {
@@ -169,7 +167,7 @@ router.post("/removesubscription", (req, res) => {
     user.save().then(user => res.send(user));
   })
 });
-router.put("/usertags",(req, res)=>{
+router.put("/usertags",auth.ensureLoggedIn,(req, res)=>{
   User.findById(req.user._id).then((user)=>{
     user.subscribedTags = req.body.subscribedTags
     user.save().then((user)=>res.send(user))
@@ -178,7 +176,7 @@ router.put("/usertags",(req, res)=>{
 )
 })
 
-router.put("/questionlikes",(req,res)=>{
+router.put("/questionlikes",auth.ensureLoggedIn,(req,res)=>{
   User.findById(req.user._id).then((user)=>{
   if (user.likedPosts.includes(req.body._id)){
     Question.findOne({_id:req.body._id}).then((questionFound)=>{
@@ -208,7 +206,7 @@ router.put("/questionlikes",(req,res)=>{
 
 
 })
-router.put("/commentlikes",(req,res)=>{
+router.put("/commentlikes",auth.ensureLoggedIn,(req,res)=>{
   User.findById(req.user._id).then((user)=>{
   console.log(user.likedComments);
   if (user.likedComments.includes(req.body._id)){
@@ -246,7 +244,7 @@ router.put("/commentlikes",(req,res)=>{
 //     res.send(questionFound)
 //   })
 // })
-router.put("/editbio",(req,res)=>{
+router.put("/editbio",auth.ensureLoggedIn,(req,res)=>{
   console.log("new bio ", req.body.newBio)
   User.findById(req.user._id).then((user)=>{
     user.bio = req.body.newBio
@@ -255,7 +253,7 @@ router.put("/editbio",(req,res)=>{
   })
 
 })
-router.post("/makenotificationsread",(req,res)=>{
+router.post("/makenotificationsread",auth.ensureLoggedIn,(req,res)=>{
     User.findById(req.user._id).then((user)=>{
     user.notifications = req.body.updatedNotifications
     user.save().then(()=>res.send({}))

@@ -58,14 +58,19 @@ class SideBar extends Component{
                     <Link to =  {`/profilepage1/${this.props.userId}`}
                     className = "u-title-arvo TextColor SideBarLink QuestionsAsked"> Questions asked </Link>
                 <Link to = {`/profilepage3/${this.props.userRouterId}`} className = "u-title-arvo TextColor SideBarLink">Manage Subscriptions </Link>
-                <div className = "SideBarLink Logout">
+                {/* <div className = "SideBarLink Logout"> */}
                     <GoogleLogout 
                     clientId={GOOGLE_CLIENT_ID}
                     buttonText="Logout"
                     onLogoutSuccess={this.props.handleLogout}
                     onFailure={(err) => console.log(err)}
+                    render={(renderProps) => (
+                        <button className="Skele-button2 SideBarLink u-pointer" onClick={renderProps.onClick}>
+                          <span className="Skele-button-text2 u-title-arvo">Logout</span>
+                        </button>
+                      )}
                     />
-                </div>
+                {/* </div> */}
             </div>
         </div>
        );}

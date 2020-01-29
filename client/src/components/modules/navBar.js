@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import "./navBar.css";
 import NotificationsBlock from "./notificationsBlock.js";
+import GoogleLogin, { GoogleLogout } from "react-google-login";
+
+const GOOGLE_CLIENT_ID = "628992577653-37tpc827fnafhcgbqur2rggvcnpa8jkn.apps.googleusercontent.com";
 
 
 class NavBar extends Component{
@@ -74,7 +77,17 @@ class NavBar extends Component{
                  Welcome!
             </div>
             <div className = "LoginNavBar">
-               Login
+            <GoogleLogin
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Login"
+            onSuccess={this.props.handleLogin}
+            render={(renderProps) => (
+                <button className="Skele-button1 u-pointer" onClick={renderProps.onClick}>
+                  <span className="Skele-button-text1 u-title-arvo">Login</span>
+                </button>
+              )}
+            onFailure={(err) => console.log(err)}
+          />
             </div>
             </nav>
         
