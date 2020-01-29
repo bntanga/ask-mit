@@ -46,7 +46,7 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
-router.post("/questions", auth.ensureLoggedIn, (req, res) =>{
+router.post("/questions", (req, res) =>{
   const newQuestion = new Question({
   creatorName: req.body.creatorName,  
   creatorId: req.body.creatorId,
@@ -74,7 +74,7 @@ const allQuestions = await Question.find({postTags: {$in: queryTags}});
 res.send(allQuestions);
 });
 
-router.post("/comments",auth.ensureLoggedIn,(req,res)=> {
+router.post("/comments",(req,res)=> {
   const newComment = new Comment({
     creatorName: req.user.name,
     creatorId: req.body.creatorId,
@@ -117,19 +117,19 @@ router.get("/comments", (req,res)=> {
   // console.log("comments queried: ", comments)
   res.send(comments)})
 })
-router.get("/userquestions", auth.ensureLoggedIn,(req,res)=> {
+router.get("/userquestions", (req,res)=> {
   Question.find({creatorId: req.query.creatorId})
   .then((questions)=>{
   res.send(questions)})
 
 })
-router.get("/user", auth.ensureLoggedIn,(req,res)=>  
+router.get("/user",(req,res)=>  
   {
     // console.log(req.query) 
   User.find({_id:req.query.userId}).then((user)=>res.send(user) )})
 
 
-router.post("/addsubscription", auth.ensureLoggedIn,(req, res) => {
+router.post("/addsubscription", (req, res) => {
   let tag = req.query.tag;
 
   User.findById(req.user._id).then((user)=> {
@@ -148,7 +148,7 @@ router.post("/addsubscription", auth.ensureLoggedIn,(req, res) => {
   })
 });
 
-router.post("/removesubscription",auth.ensureLoggedIn, (req, res) => {
+router.post("/removesubscription", (req, res) => {
   let tag = req.query.tag;
 
   User.findById(req.user._id).then((user)=> {
@@ -167,7 +167,7 @@ router.post("/removesubscription",auth.ensureLoggedIn, (req, res) => {
     user.save().then(user => res.send(user));
   })
 });
-router.put("/usertags",auth.ensureLoggedIn,(req, res)=>{
+router.put("/usertags",(req, res)=>{
   User.findById(req.user._id).then((user)=>{
     user.subscribedTags = req.body.subscribedTags
     user.save().then((user)=>res.send(user))
@@ -176,7 +176,7 @@ router.put("/usertags",auth.ensureLoggedIn,(req, res)=>{
 )
 })
 
-router.put("/questionlikes",auth.ensureLoggedIn,(req,res)=>{
+router.put("/questionlikes",(req,res)=>{
   User.findById(req.user._id).then((user)=>{
   if (user.likedPosts.includes(req.body._id)){
     Question.findOne({_id:req.body._id}).then((questionFound)=>{
@@ -204,7 +204,7 @@ router.put("/questionlikes",auth.ensureLoggedIn,(req,res)=>{
 
 
 })
-router.put("/commentlikes",auth.ensureLoggedIn,(req,res)=>{
+router.put("/commentlikes",(req,res)=>{
   User.findById(req.user._id).then((user)=>{
   if (user.likedComments.includes(req.body._id)){
     Comment.findOne({_id:req.body._id}).then((commentFound)=>{
@@ -240,7 +240,7 @@ router.put("/commentlikes",auth.ensureLoggedIn,(req,res)=>{
 //     res.send(questionFound)
 //   })
 // })
-router.put("/editbio",auth.ensureLoggedIn,(req,res)=>{
+router.put("/editbio",(req,res)=>{
   User.findById(req.user._id).then((user)=>{
     user.bio = req.body.newBio
     user.save().then((user)=>res.send(user))
@@ -248,7 +248,7 @@ router.put("/editbio",auth.ensureLoggedIn,(req,res)=>{
   })
 
 })
-router.post("/makenotificationsread",auth.ensureLoggedIn,(req,res)=>{
+router.post("/makenotificationsread",(req,res)=>{
     User.findById(req.user._id).then((user)=>{
     user.notifications = req.body.updatedNotifications
     user.save().then(()=>res.send({}))

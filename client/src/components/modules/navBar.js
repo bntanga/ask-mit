@@ -4,7 +4,7 @@ import "./navBar.css";
 import NotificationsBlock from "./notificationsBlock.js";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 
-const GOOGLE_CLIENT_ID = "628992577653-37tpc827fnafhcgbqur2rggvcnpa8jkn.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "502384453504-5lqr5rmdtv8e6qou09m2atnj66grb31g.apps.googleusercontent.com";
 
 
 class NavBar extends Component{

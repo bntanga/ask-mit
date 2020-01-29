@@ -9,7 +9,7 @@ import { faEdit } from '@fortawesome/free-regular-svg-icons';
 /**
  * @param {string} userName of profile owner
  */
-const GOOGLE_CLIENT_ID = "628992577653-37tpc827fnafhcgbqur2rggvcnpa8jkn.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "502384453504-5lqr5rmdtv8e6qou09m2atnj66grb31g.apps.googleusercontent.com";
 
 class SideBar extends Component{
     constructor(props) {

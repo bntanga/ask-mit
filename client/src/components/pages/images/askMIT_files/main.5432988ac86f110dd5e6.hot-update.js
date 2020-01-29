@@ -76,7 +76,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * @param {string} userName of profile owner
  */
 
-var GOOGLE_CLIENT_ID = "628992577653-37tpc827fnafhcgbqur2rggvcnpa8jkn.apps.googleusercontent.com";
+var GOOGLE_CLIENT_ID = "502384453504-5lqr5rmdtv8e6qou09m2atnj66grb31g.apps.googleusercontent.com";
 
 var SideBar =
 /*#__PURE__*/
